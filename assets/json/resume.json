@@ -125,7 +125,7 @@
     {
       "name": "GitLeaks Extension for Azure DevOps",
       "summary": "Writen an extension for Azure DevOps to integrate GitLeaks into your Azure Pipelines.",
-      "highlights": ["Azure DevOps","SAST", "GitLeaks"],
+      "highlights": ["Azure DevOps", "SAST", "GitLeaks"],
       "startDate": "2021-03-26",
       "url": "https://marketplace.visualstudio.com/items?itemName=Foxholenl.Gitleaks"
     }
