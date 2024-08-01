@@ -3,7 +3,7 @@ layout: post
 title: 10 years of testing - from covering your ass to accelerating feedbackloops
 date: 2024-03-01 23:36:10
 description: This is a little story about my journey as a tester
-tags: Testing
+#tags: Testing
 categories: Testing
 typograms: false
 ---

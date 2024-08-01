@@ -3,7 +3,7 @@ layout: post
 title: What We Can Learn from SpaceX Regarding DevOps
 date: 2024-03-01 23:36:10
 description: This post explains the awesome things that are happening right now at Starbase and what we as professionals can learn from SpaceX
-tags: DevOps, Space, Learning
+#tags: DevOps, Space, Learning
 categories: DevOps
 typograms: false
 ---
@@ -79,7 +79,7 @@ Only after performing the first four steps do you start automating. Automating h
 I often encounter teams that follow the "automate everything" principle. I think it's not a good idea because starting with automation can increase inefficiency. Bill Gates said this years ago:
 
 > "The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency.
-> The second is that automation applied to an inefficient operation will magnify the inefficiency."
+> The second is that automation applied to an inefficient operation will magnify the inefficiency." - Bill Gates
 
 In our DevOps world, we engineers should more often reflect on the principles of SpaceX and be less quick to jump on the automation and tooling hype. It makes sense because most job openings don't ask for optimization. They ask for tooling and thus automation knowledge.
 
