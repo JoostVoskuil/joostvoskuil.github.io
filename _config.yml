@@ -130,8 +130,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: Joost Voskuil Blog # blog_name will be displayed in your blog page
-blog_description: My Blog posts about just some random stuff
+blog_name: Blog # blog_name will be displayed in your blog page
+# blog_description: My Blog posts about just random stuff
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
