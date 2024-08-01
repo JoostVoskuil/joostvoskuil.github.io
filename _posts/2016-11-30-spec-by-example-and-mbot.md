@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Serious Gaming – Learn Specification by Example with the mBot
-date: 2024-11-30 23:36:10
+date: 2016-11-30 23:36:10
 description: This is a little story about my journey as a tester
 #tags: Testing, SpecificationByExample,Sbe,BDD
 categories: Testing, BDD, SbE

@@ -86,5 +86,3 @@ In our DevOps world, we engineers should more often reflect on the principles of
 In my opinion, a good engineer has a holistic view of the whole, asks critical questions, and always looks at whether complexity can be reduced to create a more reliable and cheaper whole. Let's look more at how SpaceX develops rockets. If they can do it with rockets, we should be able to do it with our software too.
 
 In which rocket would you like to take a trip around the moon? A rocket that has been thoroughly tested on paper and on the ground and has flown only a handful of times, or a rocket that initially exploded often and from which all weaknesses were removed through a fast learning process?
-
-Joost Voskuil - DevOps Consultant
