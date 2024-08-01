@@ -2,7 +2,7 @@
 layout: post
 title: Start Blogging
 date: 2024-08-01 10:00:00
-inline: false
+inline: true
 related_posts: false
 ---
 
