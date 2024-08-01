@@ -16,7 +16,7 @@ A real revolution in space technology is happening right now. SpaceX, the compan
 
 NASA is currently developing the [Space Launch System (SLS) rocket](https://www.nasa.gov/exploration/systems/sls/index.html). This rocket is expected to bring humans back to the moon within a few years. Artemis is the successor to the Apollo program from the 1960s and 70s. The SLS rocket is an evolution of the Space Shuttle that last flew in 2011 and uses revised and optimized components from the Space Shuttle. NASA receives its budget from the United States treasury under strict conditions. The money must be spent on subcontractors active in certain states to guarantee jobs, involving significant lobbying between senators. This rocket is for single use; after launch, the components burn up in the atmosphere or fall into the ocean. Making and launching four rockets costs about $41 billion. Because it involves public money, no mistakes are allowed, as this would result in negative publicity and reputational damage. The approach is waterfall, where the entire system is designed, built, inspected, tested, tested again, and tested once more. Due to the subcontractors, a lot of time is spent aligning the designs. This all feels safe, and it is necessary because people will soon be flying in the Orion capsule of the SLS rocket to the moon. NASA chooses 100% certainty: 'failure is not an option.' From the first launch, it must go perfectly.
 
-{% include figure.liquid loading="eager" path="assets/img/sls.jpg" class="img-fluid rounded z-depth-1" %}
+{% include figure.liquid loading="eager" path="assets/img/sls.jpg" class="img-fluid rounded z-depth-0" %}
 
 ## The Starship Rocket from SpaceX
 
