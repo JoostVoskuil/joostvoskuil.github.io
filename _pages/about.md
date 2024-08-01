@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Some information about me.
+subtitle: Just some basic information about me.
 
 profile:
   align: right
