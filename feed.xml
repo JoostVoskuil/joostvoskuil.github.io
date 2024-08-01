@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://foxhole.nl/feed.xml" rel="self" type="application/atom+xml"/><link href="https://foxhole.nl/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-08-01T10:49:43+00:00</updated><id>https://foxhole.nl/feed.xml</id><title type="html">Joost Voskuil Blog</title><subtitle>Just some thoughts and ideas. Nothing more. Thoughts are my own. </subtitle><entry><title type="html">a post with tabs</title><link href="https://foxhole.nl/blog/2024/tabs/" rel="alternate" type="text/html" title="a post with tabs"/><published>2024-05-01T00:32:13+00:00</published><updated>2024-05-01T00:32:13+00:00</updated><id>https://foxhole.nl/blog/2024/tabs</id><content type="html" xml:base="https://foxhole.nl/blog/2024/tabs/"><![CDATA[<p>This is how a post with <a href="https://github.com/Ovski4/jekyll-tabs">tabs</a> looks like. Note that the tabs could be used for different purposes, not only for code.</p> <h2 id="first-tabs">First tabs</h2> <p>To add tabs, use the following syntax:</p> <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">tabs</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="cp">%}</span>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://foxhole.nl/feed.xml" rel="self" type="application/atom+xml"/><link href="https://foxhole.nl/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-08-01T11:18:02+00:00</updated><id>https://foxhole.nl/feed.xml</id><title type="html">Joost Voskuil Blog</title><subtitle>Just some thoughts and ideas. Nothing more. Thoughts are my own. </subtitle><entry><title type="html">a post with tabs</title><link href="https://foxhole.nl/blog/2024/tabs/" rel="alternate" type="text/html" title="a post with tabs"/><published>2024-05-01T00:32:13+00:00</published><updated>2024-05-01T00:32:13+00:00</updated><id>https://foxhole.nl/blog/2024/tabs</id><content type="html" xml:base="https://foxhole.nl/blog/2024/tabs/"><![CDATA[<p>This is how a post with <a href="https://github.com/Ovski4/jekyll-tabs">tabs</a> looks like. Note that the tabs could be used for different purposes, not only for code.</p> <h2 id="first-tabs">First tabs</h2> <p>To add tabs, use the following syntax:</p> <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">tabs</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="cp">%}</span>
 
 <span class="cp">{%</span><span class="w"> </span><span class="nt">tab</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="nv">tab-name-1</span><span class="w"> </span><span class="cp">%}</span>
 
@@ -13,16 +13,16 @@ Content 2
 <span class="cp">{%</span><span class="w"> </span><span class="nt">endtab</span><span class="w"> </span><span class="cp">%}</span>
 
 <span class="cp">{%</span><span class="w"> </span><span class="nt">endtabs</span><span class="w"> </span><span class="cp">%}</span>
-</code></pre></div></div> <p>With this you can generate visualizations like:</p> <ul id="log" class="tab" data-tab="11de2760-b7ff-4320-a9c9-0d7485a4b5b9" data-name="log"> <li class="active" id="log-php"> <a href="#">php </a> </li> <li id="log-js"> <a href="#">js </a> </li> <li id="log-ruby"> <a href="#">ruby </a> </li> </ul> <ul class="tab-content" id="11de2760-b7ff-4320-a9c9-0d7485a4b5b9" data-name="log"> <li class="active"> <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">var_dump</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">);</span>
+</code></pre></div></div> <p>With this you can generate visualizations like:</p> <ul id="log" class="tab" data-tab="7a5e167f-0fba-4534-9a1b-041c1f5f06bf" data-name="log"> <li class="active" id="log-php"> <a href="#">php </a> </li> <li id="log-js"> <a href="#">js </a> </li> <li id="log-ruby"> <a href="#">ruby </a> </li> </ul> <ul class="tab-content" id="7a5e167f-0fba-4534-9a1b-041c1f5f06bf" data-name="log"> <li class="active"> <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">var_dump</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">);</span>
 </code></pre></div></div> </li> <li> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div> </li> <li> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pputs</span> <span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span>
-</code></pre></div></div> </li> </ul> <h2 id="another-example">Another example</h2> <ul id="data-struct" class="tab" data-tab="e4877a60-c41f-46c3-9014-ed589af90dd5" data-name="data-struct"> <li class="active" id="data-struct-yaml"> <a href="#">yaml </a> </li> <li id="data-struct-json"> <a href="#">json </a> </li> </ul> <ul class="tab-content" id="e4877a60-c41f-46c3-9014-ed589af90dd5" data-name="data-struct"> <li class="active"> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hello</span><span class="pi">:</span>
+</code></pre></div></div> </li> </ul> <h2 id="another-example">Another example</h2> <ul id="data-struct" class="tab" data-tab="8a4b48fd-2a09-4370-9c53-9dcc0352ba42" data-name="data-struct"> <li class="active" id="data-struct-yaml"> <a href="#">yaml </a> </li> <li id="data-struct-json"> <a href="#">json </a> </li> </ul> <ul class="tab-content" id="8a4b48fd-2a09-4370-9c53-9dcc0352ba42" data-name="data-struct"> <li class="active"> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hello</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s2">"</span><span class="s">whatsup"</span>
   <span class="pi">-</span> <span class="s2">"</span><span class="s">hi"</span>
 </code></pre></div></div> </li> <li> <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"hello"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"whatsup"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hi"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div> </li> </ul> <h2 id="tabs-for-something-else">Tabs for something else</h2> <ul id="something-else" class="tab" data-tab="f959142e-5356-40a6-9f84-a1186dce2a46" data-name="something-else"> <li class="active" id="something-else-text"> <a href="#">text </a> </li> <li id="something-else-quote"> <a href="#">quote </a> </li> <li id="something-else-list"> <a href="#">list </a> </li> </ul> <ul class="tab-content" id="f959142e-5356-40a6-9f84-a1186dce2a46" data-name="something-else"> <li class="active"> <p>Regular text</p> </li> <li> <blockquote> <p>A quote</p> </blockquote> </li> <li> <p>Hipster list</p> <ul> <li>brunch</li> <li>fixie</li> <li>raybans</li> <li>messenger bag</li> </ul> </li> </ul>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is what included tabs in a post could look like]]></summary></entry><entry><title type="html">a post with typograms</title><link href="https://foxhole.nl/blog/2024/typograms/" rel="alternate" type="text/html" title="a post with typograms"/><published>2024-04-29T23:36:10+00:00</published><updated>2024-04-29T23:36:10+00:00</updated><id>https://foxhole.nl/blog/2024/typograms</id><content type="html" xml:base="https://foxhole.nl/blog/2024/typograms/"><![CDATA[<p>This is an example post with some <a href="https://github.com/google/typograms/">typograms</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">typograms
+</span></code></pre></div></div> </li> </ul> <h2 id="tabs-for-something-else">Tabs for something else</h2> <ul id="something-else" class="tab" data-tab="b429195e-386a-4122-b9ef-ef5be5a82967" data-name="something-else"> <li class="active" id="something-else-text"> <a href="#">text </a> </li> <li id="something-else-quote"> <a href="#">quote </a> </li> <li id="something-else-list"> <a href="#">list </a> </li> </ul> <ul class="tab-content" id="b429195e-386a-4122-b9ef-ef5be5a82967" data-name="something-else"> <li class="active"> <p>Regular text</p> </li> <li> <blockquote> <p>A quote</p> </blockquote> </li> <li> <p>Hipster list</p> <ul> <li>brunch</li> <li>fixie</li> <li>raybans</li> <li>messenger bag</li> </ul> </li> </ul>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is what included tabs in a post could look like]]></summary></entry><entry><title type="html">a post with typograms</title><link href="https://foxhole.nl/blog/2024/typograms/" rel="alternate" type="text/html" title="a post with typograms"/><published>2024-04-29T23:36:10+00:00</published><updated>2024-04-29T23:36:10+00:00</updated><id>https://foxhole.nl/blog/2024/typograms</id><content type="html" xml:base="https://foxhole.nl/blog/2024/typograms/"><![CDATA[<p>This is an example post with some <a href="https://github.com/google/typograms/">typograms</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">typograms
 </span><span class="sb">+----+
 |    |---&gt; My first diagram!
 +----+</span>
@@ -128,7 +128,7 @@ Content 2
 \ENDPROCEDURE
 \end{algorithmic}
 \end{algorithm}
-</code></pre>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is what included pseudo code could look like]]></summary></entry><entry><title type="html">a post with code diff</title><link href="https://foxhole.nl/blog/2024/code-diff/" rel="alternate" type="text/html" title="a post with code diff"/><published>2024-01-27T19:22:00+00:00</published><updated>2024-01-27T19:22:00+00:00</updated><id>https://foxhole.nl/blog/2024/code-diff</id><content type="html" xml:base="https://foxhole.nl/blog/2024/code-diff/"><![CDATA[<p>You can display diff code by using the regular markdown syntax:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">diff
+</code></pre>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is what included pseudo code could look like]]></summary></entry><entry><title type="html">What We Can Learn from SpaceX Regarding DevOps</title><link href="https://foxhole.nl/blog/2024/what-we-can-learn-from-spacex-regarding-devops/" rel="alternate" type="text/html" title="What We Can Learn from SpaceX Regarding DevOps"/><published>2024-03-01T23:36:10+00:00</published><updated>2024-03-01T23:36:10+00:00</updated><id>https://foxhole.nl/blog/2024/what-we-can-learn-from-spacex-regarding-devops</id><content type="html" xml:base="https://foxhole.nl/blog/2024/what-we-can-learn-from-spacex-regarding-devops/"><![CDATA[<blockquote> <p>This blogpost was writen for Delta-N and originally posted in Dutch on <a href="https://www.delta-n.nl">the Delta-N website</a></p> </blockquote> <p>A real revolution in space technology is happening right now. SpaceX, the company of Elon Musk, accounts for 80 percent of the total mass brought into space. This number will rapidly increase to 90 percent. Many people are critical of Elon Musk. For this blog, we need to look beyond his ego and focus on how the engineers on the ground are working. In my opinion, SpaceX’s success is due to their approach. Within DevOps, we can learn a lot from them. In this blog, I want to discuss the difference between NASA and SpaceX (both developing a new rocket) and what makes SpaceX so unique.</p> <h2 id="the-space-launch-system-sls-rocket-from-nasa">The Space Launch System (SLS) Rocket from NASA</h2> <p>NASA is currently developing the <a href="https://www.nasa.gov/exploration/systems/sls/index.html">Space Launch System (SLS) rocket</a>. This rocket is expected to bring humans back to the moon within a few years. Artemis is the successor to the Apollo program from the 1960s and 70s. The SLS rocket is an evolution of the Space Shuttle that last flew in 2011 and uses revised and optimized components from the Space Shuttle. NASA receives its budget from the United States treasury under strict conditions. The money must be spent on subcontractors active in certain states to guarantee jobs, involving significant lobbying between senators. This rocket is for single use; after launch, the components burn up in the atmosphere or fall into the ocean. Making and launching four rockets costs about $41 billion. Because it involves public money, no mistakes are allowed, as this would result in negative publicity and reputational damage. The approach is waterfall, where the entire system is designed, built, inspected, tested, tested again, and tested once more. Due to the subcontractors, a lot of time is spent aligning the designs. This all feels safe, and it is necessary because people will soon be flying in the Orion capsule of the SLS rocket to the moon. NASA chooses 100% certainty: ‘failure is not an option.’ From the first launch, it must go perfectly.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/sls-480.webp 480w,/assets/img/sls-800.webp 800w,/assets/img/sls-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/sls.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <h2 id="the-starship-rocket-from-spacex">The Starship Rocket from SpaceX</h2> <p>SpaceX is currently developing Starship. <a href="https://www.spacex.com/vehicles/starship/">Starship</a> is the largest, heaviest, and most powerful rocket ever made. There is a significant difference with NASA’s SLS rocket: Starship will be fully and quickly reusable, like an airplane. Launch, land, refuel, and relaunch. This significantly reduces costs for bringing mass into space.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/starship-480.webp 480w,/assets/img/starship-800.webp 800w,/assets/img/starship-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/starship.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <p>At the time of writing, the second test rocket is ready for launch. This will undoubtedly be accompanied by a large explosion, or as SpaceX calls it, a ‘Rapid Unscheduled Disassembly.’ Our media will negatively highlight this as a rocket explosion, but for SpaceX, it is not a failure. For SpaceX, it is about collecting data and learning—learning a lot and learning quickly. Their feedback loop is short, and each component from their factory is an improvement on the previous version. Sometimes they take shortcuts. Where NASA’s slogan is ‘failure is not an option,’ SpaceX goes with ‘Just send it.’ Learning happens in practice. Practice is more valuable than theory. Stability and reliability are achieved by doing something frequently and thus eliminating all errors. This is similar to DevOps: deploying and releasing software. The more you do it, the better and faster you become.</p> <p>SpaceX has gained experience with this approach by landing their Falcon 9 rocket. While the world said it was madness to land a returning rocket on Earth and relaunch it, SpaceX proved it could be done. The latest version of this rocket has landed successfully 225 times (out of 236 attempts). This rocket is the most reliable rocket ever made, and even the landing has a higher reliability than all other rockets in terms of launches. An impression of the first landing attempts is summarized in a hilarious YouTube video <a href="https://www.youtube.com/watch?v=bvim4rsNHkQ">‘How not to land an orbital class rocket booster.’</a></p> <h2 id="spacexs-innovation-algorithm">SpaceX’s Innovation Algorithm</h2> <p>SpaceX uses an innovation algorithm consisting of five principles. Every engineer at SpaceX works according to these five principles, which can also be applied in the DevOps world. The principles are:</p> <ul> <li>Make the requirements less dumb</li> <li>Delete the part or process step</li> <li>Optimize</li> <li>Accelerate</li> <li>Automate</li> </ul> <h3 id="make-the-requirements-less-dumb">Make the requirements less dumb</h3> <p>You must assume that the requirements you are told are always wrong. The question is, how wrong are they? You must question the requirements because continuous learning and new insights emerge. Primarily, it is about seeking the right question.</p> <p>Where people collaborate on a complex whole, constraints around the requirements arise. In English, we call them ‘constraints.’ As an engineer, you must adhere to the constraints when realizing a part within a complex whole. Otherwise, it won’t align with a component someone else has created. Many organizations believe this is efficient and effective. It gives you less freedom in realizing a certain component both in process and actual result. This results in what we call ‘local optimization.’ You build the best you can but within these constraints. This does not mean the whole system works optimally.</p> <p>At SpaceX, simply accepting a constraint as a constraint is out of the question. A constraint must always be challengeable because constraints increase the complexity of the whole. Experience shows that with constraints, often no one really knows why the constraint exists or was imposed by someone who has since left. You want to strive for ‘global optimization’ and want people to look beyond departments and individuals to jointly realize the best solution.</p> <p>During software development, engineers must always be able to challenge the requirements. In practice, this often happens with product owners. Something is conceived, but a product owner is also just a human with biases/beliefs. Already in 2009, Microsoft proved with this <a href="http://ai.stanford.edu/~ronnyk/ExPThinkWeek2009Public.pdf">paper</a> that 2/3 of all software developed has no or negative value. Impact mapping, feature mapping, and behavior-driven development can help in software development to ask the right questions, challenge the requirements, and uncover the right requirements. Data telemetry and observability can further support this by quickly learning from practice.</p> <h3 id="delete-the-part-or-process-step">Delete the part or process step</h3> <p>If the component or process step is not there at all, it saves time, money, and especially complexity.</p> <p>SpaceX wants to fully reuse Starship, so the rocket must be able to land. Creating a landing gear is complex and adds extra weight. Therefore, SpaceX has completely removed the landing gear from the rocket. The rocket is caught in mid-air by two large grab arms. Imagine a 70-meter-tall and 9-meter-diameter building being caught from the air. The complexity is moved to the launch &amp; landing tower, allowing the rocket to carry more cargo because the landing gear is no longer needed.</p> <p>Engineers often make the mistake of optimizing or automating something that shouldn’t exist at all. As an example, I want to mention Kubernetes. Kubernetes is a fantastic product with many great possibilities but can quickly become complex. If you don’t have scalability or availability problems for an application, why make it more complex? Kubernetes is extremely suitable for improving these quality aspects. If scalability and availability are not an issue for your application, don’t implement it and keep it simple. We engineers need a holistic view of the whole to oversee this. Good engineers are good at system thinking.</p> <h3 id="optimize">Optimize</h3> <p>The optimize step is essentially repeating the steps of “make the requirements less dumb” and “delete the part of the process step” several times. How often? That can’t be said. It is important to understand that our IT world is a complex whole. No one sees the whole picture, and complex systems are <a href="https://www.adaptivecapacitylabs.com/HowComplexSystemsFail.pdf">always on the verge of failure.</a> The simpler the whole, the fewer components are used, and the higher the reliability. This creates a conflict for many engineers because it’s often thought that the more tooling, the better. To make matters worse, complexity sells better, as <a href="https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD896.html">Edsger Dijkstra</a> once said.</p> <p>Engineers often make the mistake of optimizing or automating something that shouldn’t exist in the first place. As an example, I would like to mention Kubernetes. Kubernetes is a fantastic product with many great features but can quickly become complex. If you don’t have scalability or availability issues for an application, why make the whole thing more complex? Kubernetes is ideally suited to improve precisely these quality aspects. If scalability and availability are not a problem for your application, don’t implement it and keep it simple. We engineers need a holistic view of the whole to oversee this. Good engineers are good at <a href="https://en.wikipedia.org/wiki/Systems_thinking">system thinking.</a></p> <h3 id="accelerate">Accelerate</h3> <p>After iterating through the whole and optimizing it several times, then go faster. By going faster, you remove errors from the process or product. You discover weaknesses or identify which elements need attention. By accelerating, you make new discoveries.</p> <p>This aligns with the saying “if it hurts, do it more often.” You can always go faster, but be careful not to go too fast, as this could create unacceptable risks, especially when there is potential for reputational, financial, or even life-and-death damage.</p> <p>I’ve experienced my team being under pressure to deliver several features by a certain date. To deliver faster, we decided to spend less time testing. We accepted the risk that our customers might encounter errors. The result? It was quite manageable; yes, there were some complaints, yes, we saw strange situations in the logs, but ultimately we resolved them quickly. We realized that we were structurally over-testing and that our test coverage could be reduced to deliver faster. This led to a revision of the measures we took as a team regarding risk mitigations.</p> <h3 id="automate">Automate</h3> <p>Only after performing the first four steps do you start automating. Automating helps you go even faster and standardize. You streamline the process further. You only automate last because that’s when you can efficiently and effectively automate the whole.</p> <h2 id="the-relationship-with-devops-way-of-working-and-the-pitfall-of-automate-everything">The Relationship with DevOps Way of Working and the Pitfall of ‘Automate Everything’</h2> <p>I often encounter teams that follow the “automate everything” principle. I think it’s not a good idea because starting with automation can increase inefficiency. Bill Gates said this years ago:</p> <blockquote> <p>“The first rule of any technology used in a business is that automation applied to an efficient operation will magnify the efficiency. The second is that automation applied to an inefficient operation will magnify the inefficiency.”</p> </blockquote> <p>In our DevOps world, we engineers should more often reflect on the principles of SpaceX and be less quick to jump on the automation and tooling hype. It makes sense because most job openings don’t ask for optimization. They ask for tooling and thus automation knowledge.</p> <p>In my opinion, a good engineer has a holistic view of the whole, asks critical questions, and always looks at whether complexity can be reduced to create a more reliable and cheaper whole. Let’s look more at how SpaceX develops rockets. If they can do it with rockets, we should be able to do it with our software too.</p> <p>In which rocket would you like to take a trip around the moon? A rocket that has been thoroughly tested on paper and on the ground and has flown only a handful of times, or a rocket that initially exploded often and from which all weaknesses were removed through a fast learning process?</p> <p>Joost Voskuil - DevOps Consultant</p>]]></content><author><name></name></author><category term="DevOps"/><category term="DevOps,"/><category term="Space,"/><category term="Learning"/><summary type="html"><![CDATA[This post explains the awesome things that are happening right now at Starbase and what we as professionals can learn from SpaceX]]></summary></entry><entry><title type="html">a post with code diff</title><link href="https://foxhole.nl/blog/2024/code-diff/" rel="alternate" type="text/html" title="a post with code diff"/><published>2024-01-27T19:22:00+00:00</published><updated>2024-01-27T19:22:00+00:00</updated><id>https://foxhole.nl/blog/2024/code-diff</id><content type="html" xml:base="https://foxhole.nl/blog/2024/code-diff/"><![CDATA[<p>You can display diff code by using the regular markdown syntax:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">diff
 </span><span class="gh">diff --git a/sample.js b/sample.js
 index 0000001..0ddf2ba
 </span><span class="gd">--- a/sample.js
@@ -774,162 +774,4 @@ index 3bb754ac..a34839c0 100644
     }
   ]
 }
-</code></pre> <p>Note that this library offer support for both light and dark themes. You can switch between them using the theme switcher in the top right corner of the page.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="charts"/><summary type="html"><![CDATA[this is what included echarts code could look like]]></summary></entry><entry><title type="html">a post with chart.js</title><link href="https://foxhole.nl/blog/2024/chartjs/" rel="alternate" type="text/html" title="a post with chart.js"/><published>2024-01-26T01:04:00+00:00</published><updated>2024-01-26T01:04:00+00:00</updated><id>https://foxhole.nl/blog/2024/chartjs</id><content type="html" xml:base="https://foxhole.nl/blog/2024/chartjs/"><![CDATA[<p>This is an example post with some <a href="https://www.chartjs.org/">chart.js</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chartjs
-</span><span class="sb">{
-  "type": "line",
-  "data": {
-    "labels": [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July"
-    ],
-    "datasets": [
-      {
-        "label": "# of bugs",
-        "fill": false,
-        "lineTension": 0.1,
-        "backgroundColor": "rgba(75,192,192,0.4)",
-        "borderColor": "rgba(75,192,192,1)",
-        "borderCapStyle": "butt",
-        "borderDash": [],
-        "borderDashOffset": 0,
-        "borderJoinStyle": "miter",
-        "pointBorderColor": "rgba(75,192,192,1)",
-        "pointBackgroundColor": "#fff",
-        "pointBorderWidth": 1,
-        "pointHoverRadius": 5,
-        "pointHoverBackgroundColor": "rgba(75,192,192,1)",
-        "pointHoverBorderColor": "rgba(220,220,220,1)",
-        "pointHoverBorderWidth": 2,
-        "pointRadius": 1,
-        "pointHitRadius": 10,
-        "data": [
-          65,
-          59,
-          80,
-          81,
-          56,
-          55,
-          40
-        ],
-        "spanGaps": false
-      }
-    ]
-  },
-  "options": {}
-}</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>This is how it looks like:</p> <pre><code class="language-chartjs">{
-  "type": "line",
-  "data": {
-    "labels": [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July"
-    ],
-    "datasets": [
-      {
-        "label": "# of bugs",
-        "fill": false,
-        "lineTension": 0.1,
-        "backgroundColor": "rgba(75,192,192,0.4)",
-        "borderColor": "rgba(75,192,192,1)",
-        "borderCapStyle": "butt",
-        "borderDash": [],
-        "borderDashOffset": 0,
-        "borderJoinStyle": "miter",
-        "pointBorderColor": "rgba(75,192,192,1)",
-        "pointBackgroundColor": "#fff",
-        "pointBorderWidth": 1,
-        "pointHoverRadius": 5,
-        "pointHoverBackgroundColor": "rgba(75,192,192,1)",
-        "pointHoverBorderColor": "rgba(220,220,220,1)",
-        "pointHoverBorderWidth": 2,
-        "pointRadius": 1,
-        "pointHitRadius": 10,
-        "data": [
-          65,
-          59,
-          80,
-          81,
-          56,
-          55,
-          40
-        ],
-        "spanGaps": false
-      }
-    ]
-  },
-  "options": {}
-}
-</code></pre> <p>Also another example chart.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chartjs
-</span><span class="sb">{
-  "type": "doughnut",
-  "data": {
-    "labels": [
-      "Red",
-      "Blue",
-      "Yellow"
-    ],
-    "datasets": [
-      {
-        "data": [
-          300,
-          50,
-          100
-        ],
-        "backgroundColor": [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
-        ],
-        "hoverBackgroundColor": [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
-        ]
-      }
-    ]
-  },
-  "options": {}
-}</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>Which generates:</p> <pre><code class="language-chartjs">{
-  "type": "doughnut",
-  "data": {
-    "labels": [
-      "Red",
-      "Blue",
-      "Yellow"
-    ],
-    "datasets": [
-      {
-        "data": [
-          300,
-          50,
-          100
-        ],
-        "backgroundColor": [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
-        ],
-        "hoverBackgroundColor": [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
-        ]
-      }
-    ]
-  },
-  "options": {}
-}
-</code></pre>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="charts"/><summary type="html"><![CDATA[this is what included chart.js code could look like]]></summary></entry></feed>
+</code></pre> <p>Note that this library offer support for both light and dark themes. You can switch between them using the theme switcher in the top right corner of the page.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="charts"/><summary type="html"><![CDATA[this is what included echarts code could look like]]></summary></entry></feed>
