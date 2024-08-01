@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A long announcement with details
+title: Start Blogging
 date: 2024-08-01 10:00:00-0200
 inline: false
 related_posts: false
