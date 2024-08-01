@@ -8,12 +8,11 @@ profile:
   align: right
   image: prof_pic.png
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>joost@foxhole.nl</p>
 
 news: true # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
+
 ---
 
 I am a DevOps consultant specializing in Microsoft Technology. Through my roles within Enablement and Platform teams (such as CoEs & IT4IT), I have extensive experience supporting, growing, and coaching development teams on their Continuous Delivery & DevOps journey. I balance between coach and engineer and use the 'show, do together, do yourself' principle, where I find it important that teams not only work on their Continuous Integration & Continuous Delivery pipelines but also work on how the software development lifecycle can be organized more efficiently and effectively. I focus on the DORA metrics and coach on the behavior associated with Continuous Delivery, such as intensive collaboration within and outside the team, Trunk-Based Development/GitHub flow, Build Quality In, Done means released & Hold the (pipe) line. I facilitate workshops for value stream mapping, risk analysis (risk storming), and example mapping (BDD).
