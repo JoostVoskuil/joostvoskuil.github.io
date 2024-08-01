@@ -77,42 +77,49 @@
       "date": "2024-07-01",
       "issuer": "GitHub",
       "url": "https://github.com",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-clipboard-check"
     },
     {
       "name": "GitHub Advanced Security",
       "date": "2024-07-01",
       "issuer": "GitHub",
       "url": "https://github.com",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-clipboard-check"
     },
     {
       "name": "GitHub Actions",
       "date": "2024-07-01",
       "issuer": "GitHub",
       "url": "https://github.com",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-clipboard-check"
     },
     {
       "name": "GitHub Foundation",
       "date": "2024-07-01",
       "issuer": "GitHub",
       "url": "https://github.com",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-clipboard-check"
+    },
+    {
+      "name": "AZ-400: Designing and Implementing Microsoft DevOps Solutions",
+      "date": "2021-02-01",
+      "issuer": "Microsoft",
+      "url": "https://microsoft.com",
+      "icon": "fa-solid fa-clipboard-check"
     },
     {
       "name": "AZ-104: Azure Administrator Associate",
       "date": "2021-02-01",
       "issuer": "Microsoft",
       "url": "https://microsoft.com",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-clipboard-check"
     },
     {
       "name": "AZ-900 Azure Administrator Associate",
       "date": "2020-01-01",
       "issuer": "Microsoft",
       "url": "https://microsoft.com",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-clipboard-check"
     }
   ],
   "languages": [
