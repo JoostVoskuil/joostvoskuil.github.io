@@ -2,7 +2,8 @@
 layout: post
 title: Serious Gaming – Learn Specification by Example with the mBot
 date: 2016-11-30 23:36:10
-description: This is a little story about my journey as a tester
+description: >
+  One of our colleagues discovered the mBot some time ago to teach his son how to program. It turns out that this mBot is not only interesting for children. This funny little robot is excellent for playfully mastering 'Specification by Example.'
 #tags: Testing, SpecificationByExample,Sbe,BDD
 categories: Testing BDD SbE
 typograms: false

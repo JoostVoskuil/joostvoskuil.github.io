@@ -2,7 +2,8 @@
 layout: post
 title: What We Can Learn from SpaceX Regarding DevOps
 date: 2024-03-01 23:36:10
-description: This post explains the awesome things that are happening right now at Starbase and what we as professionals can learn from SpaceX
+description: >
+  A real revolution in space technology is happening right now. SpaceX, the company of Elon Musk, accounts for 80 percent of the total mass brought into space. This number will rapidly increase to 90 percent. Many people are critical of Elon Musk. For this blog, we need to look beyond his ego and focus on how the engineers on the ground are working. In my opinion, SpaceX's success is due to their approach. Within DevOps, we can learn a lot from them. In this blog, I want to discuss the difference between NASA and SpaceX (both developing a new rocket) and what makes SpaceX so unique.
 #tags: DevOps, Space, Learning
 categories: DevOps
 typograms: false
