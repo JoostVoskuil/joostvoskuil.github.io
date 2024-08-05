@@ -4,7 +4,7 @@ title: Managed DevOps Pools in Bicep
 date: 2024-08-05 22:00:00
 description: This blog explains how you can deploy Managed DevOps Pools with Bicep
 #tags: Testing
-categories: DevOps, AzureDevOps, Azure, MDP, Pools
+categories: DevOps AzureDevOps Azure MDP Pools
 typograms: false
 ---
 
