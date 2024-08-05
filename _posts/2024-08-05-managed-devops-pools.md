@@ -35,7 +35,7 @@ The Azure DevOps pipeline is pretty straightforward. We need to register the `Mi
 
 **azure-pipelines.yml**:
 
-```yml filename="azure-pipelines.yml"
+```yml
 steps:
   - task: AzurePowerShell@5
     displayName: "Register DevOpsInfrastructure"
@@ -62,7 +62,7 @@ steps:
 
 **devCenter.bicep**:
 
-```ts filename="devCenter.bicep"
+```bicep
 param devCenterName string
 param location string = resourceGroup().location
 
@@ -83,7 +83,7 @@ resource devCenterProject 'Microsoft.DevCenter/projects@2024-02-01' = {
 
 **vnet.bicep**:
 
-```ts filename="vnet.bicep"
+```bicep
 param virtualNetworkName string
 param subnetName string
 param location string = resourceGroup().location
@@ -111,7 +111,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-09-01' = {
 
 **managedIdentity.bicep**:
 
-```ts filename="managedIdentity.bicep"
+```bicep
 param location string = resourceGroup().location
 param userAssignedIdentityName string
 
@@ -125,7 +125,7 @@ resource userAssignedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@
 
 **main.bicep**:
 
-```ts filename="main.bicep"
+```bicep
 param location string = 'eastus'
 param devCenterName string = 'azuredevops'
 param resourceGroupName string = 'azuredevops'
@@ -185,7 +185,7 @@ module managedDevOpsPool './managedDevOpsPool.bicep' = {
 
 **managedDevopsPool.bicep**:
 
-```ts filename="managedDevopsPool.bicep"
+```bicep
 param location string = resourceGroup().location
 param managedDevOpsPoolName string
 param devCenterName string
@@ -285,7 +285,6 @@ resource managedDevOpsPool 'Microsoft.DevOpsInfrastructure/pools@2024-04-04-prev
     }
   }
 }
-
 ```
 
 As you can see in the `managedDevopsPool.bicep` file, there are some options that you can pick. I haven't experimented yet with the clever scaling options.
