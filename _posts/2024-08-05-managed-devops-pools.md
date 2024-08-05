@@ -34,7 +34,7 @@ The Azure DevOps pipeline is pretty straightforward. We need to register the `Mi
 
 **azure-pipelines.yml**:
 
-```yaml filename="azure-pipelines.yml"
+```yml filename="azure-pipelines.yml"
 steps:
   - task: AzurePowerShell@5
     displayName: "Register DevOpsInfrastructure"
