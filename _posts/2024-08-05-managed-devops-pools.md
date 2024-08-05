@@ -128,7 +128,7 @@ resource userAssignedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@
 
 ```bicep filename="main.bicep"
 param location string = 'eastus'
-param devCenterName string = 'azuredevops1'
+param devCenterName string = 'azuredevops'
 param resourceGroupName string = 'azuredevops'
 param managedDevOpsPoolName string = 'foxholenl'
 param userAssignedIdentityName string = 'azuredevops'
@@ -228,6 +228,7 @@ resource managedDevOpsPool 'Microsoft.DevOpsInfrastructure/pools@2024-04-04-prev
       organizations: [
         {
           url: 'https://dev.azure.com/${azureDevOpsOrganizationName}'
+          // If you want to add the pool only to a subset of projects, uncomment below
           //projects: [
           //  'MyProject'
           //]
@@ -244,7 +245,7 @@ resource managedDevOpsPool 'Microsoft.DevOpsInfrastructure/pools@2024-04-04-prev
     agentProfile: {
       kind: 'Stateless' // Or Stateful
       //maxAgentLifetime: '7.00:00:00'    // Only allowed if kind is Stateful
-      // gracePeriodTimeSpan: '00:30:00'  // Only allowed if kind is Stateful
+      //gracePeriodTimeSpan: '00:30:00'  // Only allowed if kind is Stateful
       resourcePredictionsProfile: {
         kind: 'Automatic' // Or 'Manual'
         predictionPreference: 'Balanced'
@@ -271,7 +272,7 @@ resource managedDevOpsPool 'Microsoft.DevOpsInfrastructure/pools@2024-04-04-prev
         }
       ]
       osProfile: {
-        logonType: 'Service' // Interactive
+        logonType: 'Service' // Or Interactive
       }
       storageProfile: {
         osDiskStorageAccountType: 'StandardSSD' // StandardSSD, Standard or Premium
