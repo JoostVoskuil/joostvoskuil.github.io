@@ -8,8 +8,6 @@ categories: DevOps, AzureDevOps, Azure, MDP, Pools
 typograms: false
 ---
 
-# Introduction
-
 Today, I played around with the new preview feature of Azure and Azure DevOps called 'Managed DevOps Pools.'
 Finally, the burden of managing agents is over. As platform engineers, we were already somewhat relieved with the VMMS agent pools where automatic scaling was an option. Still, there was a big hassle of managing images. In most companies I supported, we created our own image based on Microsoft's Hosted Agents. Yup, every week, failing pipelines because the image creation failed... again and again.
 

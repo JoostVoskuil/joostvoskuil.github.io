@@ -292,7 +292,7 @@ jekyll-archives:
     category: "/blog/category/:name/"
 
 # display_tags: ["DevOps", "Testing", "Learning"] # these tags will be displayed on the front page of your blog
-display_categories: ["DevOps", "Testing"] # these categories will be displayed on the front page of your blog
+display_categories: ["DevOps", "AzureDevOps", "Azure", "Testing"] # these categories will be displayed on the front page of your blog
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
