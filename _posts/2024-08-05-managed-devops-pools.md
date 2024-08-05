@@ -61,7 +61,7 @@ steps:
 
 **devCenter.bicep**:
 
-```bicep filename="devCenter.bicep"
+```ts filename="devCenter.bicep"
 param devCenterName string
 param location string = resourceGroup().location
 
@@ -82,7 +82,7 @@ resource devCenterProject 'Microsoft.DevCenter/projects@2024-02-01' = {
 
 **vnet.bicep**:
 
-```bicep filename="vnet.bicep"
+```ts filename="vnet.bicep"
 param virtualNetworkName string
 param subnetName string
 param location string = resourceGroup().location
@@ -110,7 +110,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-09-01' = {
 
 **managedIdentity.bicep**:
 
-```bicep filename="managedIdentity.bicep"
+```ts filename="managedIdentity.bicep"
 param location string = resourceGroup().location
 param userAssignedIdentityName string
 
@@ -124,7 +124,7 @@ resource userAssignedIdentity 'Microsoft.ManagedIdentity/userAssignedIdentities@
 
 **main.bicep**:
 
-```bicep filename="main.bicep"
+```ts filename="main.bicep"
 param location string = 'eastus'
 param devCenterName string = 'azuredevops'
 param resourceGroupName string = 'azuredevops'
@@ -184,7 +184,7 @@ module managedDevOpsPool './managedDevOpsPool.bicep' = {
 
 **managedDevopsPool.bicep**:
 
-```bicep filename="managedDevopsPool.bicep"
+```ts filename="managedDevopsPool.bicep"
 param location string = resourceGroup().location
 param managedDevOpsPoolName string
 param devCenterName string
