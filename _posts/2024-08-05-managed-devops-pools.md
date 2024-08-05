@@ -8,4 +8,4 @@ categories: DevOps AzureDevOps Azure MDP Pools
 typograms: false
 ---
 
-Today, I played around with the new preview feature of Azure and Azure DevOps called 'Managed DevOps Pools'.
+Today, I played around with the new preview feature of Azure and Azure DevOps called 'Managed DevOps Pools.'
