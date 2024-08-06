@@ -12,7 +12,7 @@ Today, I played around with the new preview feature of Azure and Azure DevOps ca
 
 Finally, the burden of managing agents is over. As platform engineers, we were already somewhat relieved with the VMMS agent pools where automatic scaling was an option. Still, there was a big hassle of managing images. In most companies I supported, we created our own image based on Microsoft's Hosted Agents. Yup, every week, failing pipelines because the image creation failed... again and again.
 
-Those days are now over with the Managed DevOps Pools. I could list all the advantages, but Microsoft's documentation is really good on the Managed DevOps Pools. You can read more on the [Managed DevOps Pools learn page](https://learn.microsoft.com/en-us/azure/devops/managed-devops-pools/?view=azure-devops). Still, I need to mention VNET integration. FTW!.. w00t!
+Those days are now over with the Managed DevOps Pools. I could list all the advantages, but Microsoft's documentation is really good on the Managed DevOps Pools. You can read more on the [Managed DevOps Pools learn page](https://learn.microsoft.com/en-us/azure/devops/managed-devops-pools/?view=azure-devops). Still, I need to mention VNET integration. FTW!.. w00t! Basically we are shifting towards a PaaS model when it comes to agent management instead of IaaS.
 
 > Managed DevOps Pools are at this moment in preview
 
