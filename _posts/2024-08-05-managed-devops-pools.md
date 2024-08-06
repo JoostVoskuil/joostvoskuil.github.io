@@ -22,7 +22,7 @@ I already saw allot of blogs on the internet about this subject, but what I am m
 
 - SystemAssigned Managed Identities are not supported. You need to create UserAssigned Identities if you want an identity bound to this resource. Example is included in this setup
 - I could not get this working in the 'West Europe' region. I get the error message that there are no subscriptions available. This is the reason why I choose 'East US' as region. 1ES seems to be working on this.
-- At this moment the scaling plane is broken in the Azure portal. Only way to configure this is by ARM
+- At this moment the scaling pane is broken in the Azure portal. Only way to configure this is by ARM
 
 ## Preperations
 
