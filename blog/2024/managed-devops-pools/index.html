@@ -127,11 +127,11 @@ module managedDevOpsPool './managedDevOpsPool.bicep' = {
   scope: resourceGroup
   params: {
     managedDevOpsPoolName: managedDevOpsPoolName
-    userAssignedIdentityName: userAssignedIdentityName
+    userAssignedIdentityName: userAssignedIdentity.name
     devCenterName: devCenter.name
     azureDevOpsOrganizationName: azureDevOpsOrganizationName
     subnetName: subnetName
-    virtualNetworkName: virtualNetworkName
+    virtualNetworkName: vnet.name
   }
 }
 </code></pre> <h3 id="what-you-really-want-to-know">What you really want to know</h3> <p><strong>managedDevOpsPool.bicep</strong>:</p> <pre><code class="language-bicep">param location string = resourceGroup().location
