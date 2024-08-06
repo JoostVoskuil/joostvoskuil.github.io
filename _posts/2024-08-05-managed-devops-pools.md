@@ -172,11 +172,11 @@ module managedDevOpsPool './managedDevOpsPool.bicep' = {
   scope: resourceGroup
   params: {
     managedDevOpsPoolName: managedDevOpsPoolName
-    userAssignedIdentityName: userAssignedIdentityName
+    userAssignedIdentityName: userAssignedIdentity.name
     devCenterName: devCenter.name
     azureDevOpsOrganizationName: azureDevOpsOrganizationName
     subnetName: subnetName
-    virtualNetworkName: virtualNetworkName
+    virtualNetworkName: vnet.name
   }
 }
 ```
