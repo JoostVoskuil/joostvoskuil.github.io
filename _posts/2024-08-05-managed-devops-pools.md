@@ -16,17 +16,17 @@ Those days are now over with the Managed DevOps Pools. I could list all the adva
 
 > Managed DevOps Pools are at this moment in preview
 
-I already saw allot of blogs on the internet but what I am missing is how to deploy the Managed DevOps Pools with bicep. Microsoft seems not yet documented the API. Based on the documentation and the ARM templates on the learn page I did some engineering.
+I already saw allot of blogs on the internet about this subject, but what I am missing is how to deploy the Managed DevOps Pools with Bicep. Microsoft seems not yet documented the API. Based on the documentation and the ARM templates on the learn page I did some engineering.
 
 ## Notes
 
-- It seems that SystemAssigned Managed Identities are not supported. You need to create UserAssigned Identities if you need them.
-- I could not get this working in the 'West Europe' region. I get the error message that there are no subscriptions available. This is the reason why I choose 'East US' as region
-- At this moment the scaling plane is broken in the Azure portal
+- SystemAssigned Managed Identities are not supported. You need to create UserAssigned Identities if you want an identity bound to this resource. Example is included in this setup
+- I could not get this working in the 'West Europe' region. I get the error message that there are no subscriptions available. This is the reason why I choose 'East US' as region. 1ES seems to be working on this.
+- At this moment the scaling plane is broken in the Azure portal. Only way to configure this is by ARM
 
 ## Preperations
 
-1. Create a Service Principal in Azure and use this Service Principal with secret to create an ARM Service Connection in Azure DevOps to Azure. You also can use the workflow identity option however I am not sure if you can add this identity
+1. Create a Service Principal in Azure and use this Service Principal with secret to create an ARM Service Connection in Azure DevOps to Azure. You also can use the workflow identity option however I am not sure if you can add this identity to Azure DevOps.
 2. Add the Service Principal that you created to Azure DevOps as an user and give it the correct permissions. Microsoft explains this on this [page](https://learn.microsoft.com/en-us/azure/devops/managed-devops-pools/prerequisites?view=azure-devops&tabs=powershell#verify-azure-devops-permissions).
 
 ### The Pipeline
@@ -183,7 +183,7 @@ module managedDevOpsPool './managedDevOpsPool.bicep' = {
 
 ### What you really want to know
 
-**managedDevopsPool.bicep**:
+**managedDevOpsPool.bicep**:
 
 ```bicep
 param location string = resourceGroup().location
@@ -277,7 +277,7 @@ resource managedDevOpsPool 'Microsoft.DevOpsInfrastructure/pools@2024-04-04-prev
         osDiskStorageAccountType: 'StandardSSD' // StandardSSD, Standard or Premium
       }
 
-      // Leave this empty if you want to use 'Isolated Virtual Network'
+      // Remove if you want to use 'Isolated Virtual Network'
       networkProfile: {
         subnetId: subnet.id
       }
@@ -287,4 +287,10 @@ resource managedDevOpsPool 'Microsoft.DevOpsInfrastructure/pools@2024-04-04-prev
 }
 ```
 
-As you can see in the `managedDevopsPool.bicep` file, there are some options that you can pick. I haven't experimented yet with the clever scaling options.
+As you can see in the `managedDevOpsPool.bicep` file, there are some options that you can pick.
+
+## Next steps
+
+I haven't experimented yet with the clever scaling options. I am courious how this works. At Delta-N we already experimented with dynamic scalling based on historical data of the VMSS agent pools but it was to much work to continue.
+
+You might want to decouple deploying your DevCenter and Managed DevOps Pools. Deploying DevCenter takes allot of time and seems to be a bit error prone.
