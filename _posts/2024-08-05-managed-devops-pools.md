@@ -16,7 +16,7 @@ Those days are now over with the Managed DevOps Pools. I could list all the adva
 
 > Managed DevOps Pools are at this moment in preview
 
-I already saw allot of blogs on the internet about this subject, but what I am missing is how to deploy the Managed DevOps Pools with Bicep. Microsoft seems not yet documented the API. Based on the documentation and the ARM templates on the learn page I did some engineering.
+I already saw allot of blogs on the internet about this subject, but what I am missing is how to deploy the Managed DevOps Pools with Bicep. Microsoft seems not yet documented the API. Based on the documentation and the ARM templates on the learn page I did some engineering. This blogpost explains how you can use Bicep to deploy your Managed DevOps Pool.
 
 ## Notes
 
