@@ -64,7 +64,6 @@ An additional Azure DevOps organisation can be set-up with these steps below:
 6. Authorize Microsoft
    - A pop-up will appear asking you to Authorize Microsoft.
    - Ensure you grant access to the correct GitHub organization to complete the connection.
-     {% include figure.liquid loading="eager" path="assets/img/azureboards5.png" class="img-fluid rounded z-depth-0" %}
 7. Handle the Redirection Issue
    - After authorizing Microsoft, you'll be redirected back to the Azure DevOps GitHub Connections screen.
    - You may notice that no connection has been established yet.
@@ -72,6 +71,8 @@ An additional Azure DevOps organisation can be set-up with these steps below:
    - Click Connect with your GitHub Account once more.
    - Choose the appropriate GitHub organization again. This time, select the repositories you want to connect manually to complete the integration.
 
+{% include figure.liquid loading="eager" path="assets/img/azureboards5.png" class="img-fluid rounded z-depth-0" %}
+ 
 ### User Authorization
 
 The Azure Boards app facilitates communication between GitHub and Azure DevOps. However, there is one additional detail to note.
