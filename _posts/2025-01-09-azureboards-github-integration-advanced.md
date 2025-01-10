@@ -6,9 +6,10 @@ description: This blog explains how to set-up an advanced way configuring Azure 
 categories: AzureDevOps GitHub
 typograms: false
 ---
+
 One of our customers faced a challenge in their GitHub adoption journey. The company operates multiple Azure DevOps organizations, each backed by different Entra ID tenants. This structure evolved organically due to the company's nature—frequent acquisitions and sales of businesses, which, as we know, often complicates IT integration efforts.
 
-The company had a critical requirement: use Azure Boards from all their Azure DevOps organizations  from single GitHub organization.
+The company had a critical requirement: use Azure Boards from all their Azure DevOps organizations from single GitHub organization.
 
 ## Connecting the first Azure DevOps organization
 
@@ -63,7 +64,7 @@ An additional Azure DevOps organisation can be set-up with these steps below:
 6. Authorize Microsoft
    - A pop-up will appear asking you to Authorize Microsoft.
    - Ensure you grant access to the correct GitHub organization to complete the connection.
-{% include figure.liquid loading="eager" path="assets/img/azureboards5.png" class="img-fluid rounded z-depth-0" %}
+     {% include figure.liquid loading="eager" path="assets/img/azureboards5.png" class="img-fluid rounded z-depth-0" %}
 7. Handle the Redirection Issue
    - After authorizing Microsoft, you'll be redirected back to the Azure DevOps GitHub Connections screen.
    - You may notice that no connection has been established yet.
