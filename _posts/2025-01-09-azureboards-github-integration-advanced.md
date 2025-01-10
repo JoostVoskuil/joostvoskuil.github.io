@@ -25,7 +25,7 @@ After your choice, a pop-up prompts you to select your Azure DevOps organization
 
 But now it is unclear how to connect another Azure DevOps organization. Several blog posts highlight that if you choose the "Only select repositories" option, add a repository and press Save, the Azure DevOps pop-up will appear, allowing you to select a different Azure DevOps organization and/or project.
 
-{% include figure.liquid loading="eager" path="assets/img/azureboards3.png" class="img-fluid rounded z-depth-0" %}
+{% include figure.liquid loading="eager" path="assets/img/azureboards3.png" class="img-fluid rounded z-depth-0" width="50%" height="50%" %}
 
 However, how do you switch accounts? In several setups this complete flow goes w00sh. 404 and 403 pages, if you are lucky, you can press the ‘switch tenant’ button and you return to Azure DevOps but no GitHub connection. Retry and your token is expired. No way you can make this flow work.
 
@@ -71,7 +71,7 @@ An additional Azure DevOps organisation can be set-up with these steps below:
    - Click Connect with your GitHub Account once more.
    - Choose the appropriate GitHub organization again. This time, select the repositories you want to connect manually to complete the integration.
 
-{% include figure.liquid loading="eager" path="assets/img/azureboards5.png" class="img-fluid rounded z-depth-0" %}
+{% include figure.liquid loading="eager" path="assets/img/azureboards5.png" class="img-fluid rounded z-depth-0" width="50%" height="50%" %}
  
 ### User Authorization
 
