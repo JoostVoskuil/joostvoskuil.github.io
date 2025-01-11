@@ -72,14 +72,14 @@ An additional Azure DevOps organisation can be set-up with these steps below:
    - Choose the appropriate GitHub organization again. This time, select the repositories you want to connect manually to complete the integration.
 
 {% include figure.liquid loading="eager" path="assets/img/azureboards5.png" class="img-fluid rounded z-depth-0" width="50%" height="50%" %}
- 
+
 ### User Authorization
 
-The Azure Boards app facilitates communication between GitHub and Azure DevOps. However, there is one additional detail to note.
+The Azure Boards app facilitates the authentication from Azure DevOps towards GitHub. It creates a webhook in the GitHub repository that will send the information towards Azure DevOps.
 
-In step 6 'Authorize Microsoft, this authorization is specifically required to get the repository list from GitHub. Every user who needs to select repositories (you need to have Project Administrator permissions) will encounter this pop-up for authorization.
+When adding or removing repositories, take note of step 6, "Authorize Microsoft." This authorization is specifically required to access the organization and repository list from GitHub. Any user with Project Administrator permissions who adds or removes GitHub repositories in Azure DevOps will encounter this authorization pop-up. It is unrelated to the Azure Boards App.
 
-Once authorized, this approval is registered as an OAuth app in your personal GitHub settings. This means that each user who wants to add or remove repositories from Azure DevOps will need to authorize the app individually. However, this is only for browsing the repositories for adding/removing not the connection flow.
+Once authorized, the approval is registered as an OAuth app in your personal GitHub settings. Each user must authorize the app individually to add or remove repositories in Azure DevOps. However, this authorization is solely for browsing repositories during the add/remove process and does not affect the connection flow.
 
 {% include figure.liquid loading="eager" path="assets/img/azureboards6.png" class="img-fluid rounded z-depth-0" %}
 
