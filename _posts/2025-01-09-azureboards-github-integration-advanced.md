@@ -83,4 +83,16 @@ Once authorized, the approval is registered as an OAuth app in your personal Git
 
 {% include figure.liquid loading="eager" path="assets/img/azureboards6.png" class="img-fluid rounded z-depth-0" %}
 
+## Azure Boards Permissions on Area Paths
+
+There’s some behind-the-scenes functionality that comes into play when GitHub interacts with Azure Boards to update PBIs.
+When you link GitHub to Azure DevOps, a new account named ‘Azure Boards’ is automatically created. Microsoft describes this account as follows:
+
+"Added when Azure Boards is connected to GitHub. You shouldn't have to manage members of this group. Responsible for managing the link creation between GitHub and Azure Boards."
+You can find this at the [permission](https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions?view=azure-devops&tabs=preview-page) page.
+
+{% include figure.liquid loading="eager" path="assets/img/azureboards7.png" class="img-fluid rounded z-depth-0" width="50%" height="50%" %}
+
+It’s important to note that this account is granted permissions only at the root level of your Area Paths. If you disable inheritance for lower-level Area Paths, the ‘Azure Boards’ account will not have the necessary permissions to update user stories in those specific areas.
+
 Happy AB#ing ;)
