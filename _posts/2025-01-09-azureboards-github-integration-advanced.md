@@ -29,7 +29,7 @@ But now it is unclear how to connect another Azure DevOps organization. Several 
 
 However, how do you switch accounts? In several setups this complete flow goes w00sh. 404 and 403 pages, if you are lucky, you can press the ‘switch tenant’ button and you return to Azure DevOps but no GitHub connection. Retry and your token is expired. No way you can make this flow work.
 
-It almost seems that authorize with a GitHub PAT is the only way forward. However, we don’t want to use a PAT since it is personal bound and used for generic integration services.
+It almost seems that authorize with a GitHub PAT is the only way forward. However, we don’t want to use a PAT since it is personal bound and should not be used for generic integration services.
 
 ## The Solution – Simpler Than You Think
 
@@ -89,6 +89,7 @@ There’s some behind-the-scenes functionality that comes into play when GitHub 
 When you link GitHub to Azure DevOps, a new account named ‘Azure Boards’ is automatically created. Microsoft describes this account as follows:
 
 "Added when Azure Boards is connected to GitHub. You shouldn't have to manage members of this group. Responsible for managing the link creation between GitHub and Azure Boards."
+
 You can find this at the [permission](https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions?view=azure-devops&tabs=preview-page) page.
 
 {% include figure.liquid loading="eager" path="assets/img/azureboards7.png" class="img-fluid rounded z-depth-0" width="50%" height="50%" %}
