@@ -85,7 +85,7 @@ Once authorized, the approval is registered as an OAuth app in your personal Git
 
 ## Azure Boards Permissions on Area Paths
 
-There’s some behind-the-scenes functionality that comes into play when GitHub interacts with Azure Boards to update PBIs.
+There’s some behind the scenes functionality that comes into play when GitHub interacts with Azure Boards to update PBIs.
 When you link GitHub to Azure DevOps, a new account named ‘Azure Boards’ is automatically created. Microsoft describes this account as follows:
 
 "Added when Azure Boards is connected to GitHub. You shouldn't have to manage members of this group. Responsible for managing the link creation between GitHub and Azure Boards."
