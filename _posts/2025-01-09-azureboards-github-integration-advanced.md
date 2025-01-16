@@ -90,10 +90,10 @@ When you link GitHub to Azure DevOps, a new account named ‘Azure Boards’ is 
 
 "Added when Azure Boards is connected to GitHub. You shouldn't have to manage members of this group. Responsible for managing the link creation between GitHub and Azure Boards."
 
-You can find this at the [permission](https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions?view=azure-devops&tabs=preview-page) page.
+You can find this at the [permission](https://learn.microsoft.com/en-us/azure/devops/organizations/security/permissions?view=azure-devops&tabs=preview-page) page of root  area path.
 
 {% include figure.liquid loading="eager" path="assets/img/azureboards7.png" class="img-fluid rounded z-depth-0" width="50%" height="50%" %}
 
-It’s important to note that this account is granted permissions only at the root level of your Area Paths. If you disable inheritance for lower-level Area Paths, the ‘Azure Boards’ account will not have the necessary permissions to update user stories in those specific areas.
+It’s important to note that this account is granted permissions only at the root level of the Area of the project. If you disable inheritance for lower-level Area Paths, the ‘Azure Boards’ account will not have the necessary permissions to update user stories in those specific areas.
 
 Happy AB#ing ;)
