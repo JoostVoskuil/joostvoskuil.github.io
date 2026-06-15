@@ -1,46 +1,241 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
-      value: Joost Voskuil
-    - name: Languages
-      value: Dutch, English
+cv:
+  name: Joost Voskuil
+  label: Solution Engineer / Architect Developer Tooling
+  email: joost@foxhole.nl
+  location: "'Arnhem/Nijmegen region, The Netherlands"
+  image: ""
+  summary: >
+    Developer Tooling specialist with a strong focus on Microsoft technologies and GitHub.
+    Experienced in redesigning and modernizing developer tooling landscapes for organizations.
+    Passionate about reducing friction in software delivery through better tooling, automation, and intuitive
+    developer experiences. Platforms designed to support DORA capabilities such as CI, Continuous Testing, and CD.
+    Delivers hands-on trainings and strategic guidance on GitHub, GitHub Copilot, and GitHub Advanced Security.
+    Microsoft Certified Trainer (2025). Developer of the Gitleaks extension for Azure DevOps.
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: DevOps Consultant
-      institution: Delta-N
-      year: 2015 - present
-      description:
-        - DevOps consulting, coaching, and engineering
-        - Platform engineering and IT4IT
-        - Continuous Delivery & DevOps transformation
+  social_networks:
+    - network: GitHub
+      username: JoostVoskuil
+    - network: LinkedIn
+      username: jvoskuil
 
-- title: Skills
-  type: nested_list
-  contents:
-    - title: DevOps & Continuous Delivery
-      items:
-        - Trunk-Based Development / GitHub Flow
-        - DORA Metrics
-        - Value Stream Mapping
-        - CI/CD Pipeline Design
-    - title: Microsoft Technology
-      items:
-        - Azure DevOps
-        - GitHub
-        - Azure
-        - .NET / TypeScript
-    - title: Quality & Security
-      items:
-        - SonarQube / SonarCloud
-        - Software Composition Analysis
-        - Gitleaks
+  sections:
+    Experience:
+      - company: Delta-N
+        position: GitHub Solution Engineer
+        location: The Netherlands
+        start_date: 2025-11
+        end_date: present
+        summary: Team member of the DevOps team, helping customers accelerate delivery with GitHub, Azure DevOps and GitHub Copilot.
+        highlights:
+          - Helping customers with their migration from Azure DevOps towards GitHub Enterprise Cloud.
+          - Spearheading the Agentic DevOps with Microsoft Azure and GitHub specialization; responsible for collecting evidence for the Microsoft audit.
+          - "Worked with: GitHub Enterprise Cloud, GitHub Advanced Security, GitHub Copilot, Entra ID, Azure DevOps."
 
-- title: Open Source
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/JoostVoskuil/azure-devops-gitleaks">Gitleaks Azure DevOps Extension</a>
-      year: 2020 - present
-      description: Extension for Azure DevOps to detect secrets in git repositories using Gitleaks
+      - company: Navara
+        position: Developer Tooling Specialist
+        location: The Netherlands
+        start_date: 2024-10
+        end_date: 2026-10
+        summary: Navara is a partner in 'Agentic DevOps on Azure with GitHub' at Microsoft and a Managed GitHub Partner.
+        highlights:
+          - Led Navara's strategic partner initiatives with Microsoft and GitHub, driving alignment, co-sell activities, and joint success.
+          - Directed customer product evaluations, Proof of Value engagements, trainings, and large-scale adoption programs for GitHub Copilot and GitHub Advanced Security.
+          - Created GitHub Copilot adoption program including leadership training, measuring adoption, and educating local champions.
+          - Drove adoption of GitHub Copilot and GitHub Advanced Security across organizations of 50–700 engineers.
+          - "Worked with: GitHub Enterprise Cloud, GitHub Advanced Security, GitHub Copilot, Entra ID, Azure DevOps."
+
+      - company: Delta-N
+        position: DevOps Consultant
+        location: The Netherlands
+        start_date: 2024-01
+        end_date: 2024-09
+        summary: Helped internal software development teams with DevOps matters and completed smaller external projects.
+        highlights:
+          - Coached 6 internal development teams on DORA capabilities; focus on pipelines, Bicep templates and WIP limits.
+          - Deployed GitHub Advanced Security for Azure DevOps for 30 developers.
+          - Together with CISO, created policy around secure coding for NIS2.
+          - "Worked with: Azure, Azure DevOps, GitHub Advanced Security, Azure Functions, GitHub, TypeScript, Bicep, PowerShell."
+
+      - company: The Dutch Central Bank (DNB)
+        position: Lead Engineer DevOps Way of Working
+        location: The Netherlands
+        start_date: 2023-06
+        end_date: 2023-12
+        summary: Technical lead for the DevOps Way of Working team, supporting development teams and creating structure for the platform.
+        highlights:
+          - Drew up a 1–2 year roadmap focused on technical debt, quality gates, and metrics.
+          - Designed architecture to collect metrics from Azure DevOps, SonarQube, and Mend and surface them via PowerBI.
+          - "Worked with: Azure, Azure DevOps, Azure Functions, Entra ID, C#, SonarQube, Nexus, Mend SCA, PowerShell, TypeScript."
+
+      - company: Schiphol Netherlands
+        position: Lead CI/CD Engineer
+        location: The Netherlands
+        start_date: 2023-01
+        end_date: 2023-06
+        summary: Lead engineer for the CI/CD building block (Azure DevOps, Azure Container Registry, SonarCloud, Mend, Key Vault).
+        highlights:
+          - Redesigned CI/CD Building Block and Azure DevOps agents based on Azure Virtual Machine Scale Sets (VMSS).
+          - Build and deployment times decreased; platform became stable again.
+          - "Worked with: Azure DevOps, Docker, SonarCloud, Mend SCA, PowerShell, TypeScript, Azure Container Registry, Key Vault, OpenShift, VMSS."
+
+      - company: "Ministry of Health, Welfare and Sport - CIBG"
+        position: Continuous Delivery Expert
+        location: The Netherlands
+        start_date: 2021-03
+        end_date: 2022-12
+        summary: Stabilized the IT4IT landscape and coached 100+ developers toward Continuous Delivery (CoronaMelder, Donor Registration, BIG & UZI register).
+        highlights:
+          - Drew up and implemented a three-year 'Continuous Delivery within the BRIC' plan.
+          - Introduced container jobs, standard pipelines, multi-stage pipelines, and dependency scanning (Mend/WhiteSource).
+          - Brought pipeline ownership to teams; deployment frequency increased and change failure rate decreased.
+          - "Worked with: Azure DevOps, Docker, SonarCloud, Mend SCA, PowerShell, TypeScript, Azure Container Registry, Key Vault."
+
+      - company: Aegon Netherlands
+        position: Lead CI/CD Engineer IT4IT
+        location: The Netherlands
+        start_date: 2020-03
+        end_date: 2020-12
+        summary: Lead CI/CD Engineer simplifying and expanding the CI/CD platform and defining standards for 70 development teams.
+        highlights:
+          - Technical lead for solution designs and cost-benefit analysis for IT4IT tooling (SonarQube, Checkmarx, Artifact Storage).
+          - Standardized container images and created reusable multi-stage YAML pipeline template repositories.
+          - Wrote Azure DevOps extensions for pipeline monitoring/metrics and DORA metrics via pipeline decorators.
+          - Integrated Azure DevOps and ServiceNow for change management.
+          - "Worked with: Azure, Azure DevOps, C# .NET, Checkmarx, Docker, SonarQube, TypeScript."
+
+      - company: ABN AMRO Bank NV
+        position: Azure DevOps Specialist IT4IT
+        location: The Netherlands
+        start_date: 2019-10
+        end_date: 2020-03
+        summary: Strengthened the IT4IT department, supporting migration of all non-mainframe systems to Azure/Azure DevOps.
+        highlights:
+          - Trained and coached IT4IT teams transitioning from Bitbucket/Jenkins/XLRelease to Azure DevOps.
+          - Developed Azure DevOps Pipeline extension tasks (TypeScript) for ServiceNow change approval and DORA metrics.
+          - "Worked with: Azure, Azure DevOps, C# .NET, Docker, SonarQube, TypeScript, YAML Pipelines."
+
+      - company: ABN AMRO Bank NV
+        position: CI/CD Enabler
+        location: The Netherlands
+        start_date: 2019-01
+        end_date: 2019-09
+        summary: CI/CD coach for the Apollo program ALM cluster (8 development teams), focusing on DevOps culture and pipeline standardization.
+        highlights:
+          - Compiled DORA-based improvement backlog and facilitated weekly hackathons to implement DNB controls.
+          - Integrated SonarQube, Nexus Lifecycle, and Microfocus Fortify into build pipelines.
+
+      - company: ABN AMRO Bank NV
+        position: Test Coach
+        location: The Netherlands
+        start_date: 2018-05
+        end_date: 2018-12
+        summary: Test coach within the Centre of Excellence 'Testing & Release Management', supporting bank-wide development teams.
+        highlights:
+          - Long-term coaching in quality and testing (Riskstorming, Exploratory Testing, BDD, test automation).
+          - Developed standard testing building blocks for Azure DevOps pipelines (SonarQube, Fortify, Nexus Lifecycle).
+          - Guild Lead for Behavior Driven Development (BDD).
+
+      - company: "Various organizations (ABN Amro, NS, ProRail, Rabobank, PGGM, Volksbank, UWV)"
+        position: Tester / Test Automation Technician
+        location: The Netherlands
+        start_date: 2005
+        end_date: 2018
+        summary: Worked as tester, test automation engineer, test coach, and advisor on Continuous Testing across financial, transport, and government sectors.
+
+    Education:
+      - institution: Hogeschool Utrecht
+        location: Utrecht, The Netherlands
+        area: Higher Informatics
+        studyType: HBO
+        start_date: 2003
+        end_date: 2007
+
+      - institution: Boerhave College Leiden
+        location: Leiden, The Netherlands
+        area: HAVO
+        studyType: Secondary Education
+        start_date: 1997
+        end_date: 2001
+
+    Certificates:
+      - name: GitHub all partner delivery certificates (FY26)
+        date: 2026
+        issuer: GitHub
+        icon: fa-brands fa-github
+      - name: GitHub all partner sales / technical sales certificates (FY26)
+        date: 2026
+        issuer: GitHub
+        icon: fa-brands fa-github
+      - name: Microsoft Certified Trainer
+        date: 2025
+        issuer: Microsoft
+        icon: fa-solid fa-chalkboard-user
+      - name: GitHub Copilot
+        date: 2024
+        issuer: GitHub
+        icon: fa-brands fa-github
+      - name: GitHub Advanced Security
+        date: 2024
+        issuer: GitHub
+        icon: fa-brands fa-github
+      - name: GitHub Actions
+        date: 2024
+        issuer: GitHub
+        icon: fa-brands fa-github
+      - name: GitHub Administration
+        date: 2024
+        issuer: GitHub
+        icon: fa-brands fa-github
+      - name: GitHub Foundation
+        date: 2024
+        issuer: GitHub
+        icon: fa-brands fa-github
+      - name: "Designing and Implementing Microsoft DevOps Solutions (AZ-400)"
+        date: 2021
+        issuer: Microsoft
+        icon: fa-brands fa-microsoft
+      - name: Azure Administrator (AZ-104)
+        date: 2021
+        issuer: Microsoft
+        icon: fa-brands fa-microsoft
+      - name: Azure Foundations (AZ-900)
+        date: 2019
+        issuer: Microsoft
+        icon: fa-brands fa-microsoft
+      - name: Agile Foundation
+        date: 2013
+        issuer: DSM Consortium
+        icon: fa-solid fa-seedling
+
+    Skills:
+      - name: Developer Platforms & GitHub
+        level: Expert
+        keywords: "GitHub Enterprise Cloud, GitHub Advanced Security, GitHub Copilot, GitHub Actions, Azure DevOps, Platform Engineering, IT4IT"
+      - name: Continuous Delivery
+        level: Expert
+        keywords: "Trunk-Based Development, GitHub Flow, DORA Metrics, CI/CD Pipeline Design, Value Stream Mapping, Multi-stage Pipelines"
+      - name: Security & Quality
+        level: Advanced
+        keywords: "SonarQube, SonarCloud, GitHub Advanced Security, GHAS, Software Composition Analysis, Mend, Renovate, Gitleaks, SAST"
+      - name: Cloud & Infrastructure
+        level: Advanced
+        keywords: "Azure, Azure Entra ID, Bicep, IaC, Docker, Container Jobs, VMSS, Azure Functions, Key Vault"
+      - name: Programming & Scripting
+        level: Advanced
+        keywords: "TypeScript, C# / .NET, PowerShell, JavaScript, YAML, Gherkin, Specflow"
+      - name: Coaching & Training
+        level: Advanced
+        keywords: "Microsoft Certified Trainer, BDD, Example Mapping, Riskstorming, Value Stream Mapping"
+
+    Languages:
+      - name: Dutch
+        summary: Native speaker
+      - name: English
+        summary: Professional proficiency
+
+    Projects:
+      - name: Azure DevOps Gitleaks Extension
+        summary: Open-source extension for Azure DevOps to detect and manage secrets in git repositories using Gitleaks.
+        url: https://github.com/JoostVoskuil/azure-devops-gitleaks
+        start_date: 2020
+        end_date: present
