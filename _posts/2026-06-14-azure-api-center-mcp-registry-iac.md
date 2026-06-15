@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to manage
+title: How to manage your private MCP registry on Azure API Center with Infrastructure as Code
 date: 2026-06-14 01:00:00
 description: Infrastructure as Code for Your Private MCP Registry on Azure API Center
 categories: GitHub Copilot, MCP

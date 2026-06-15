@@ -25,10 +25,11 @@ cv:
         location: The Netherlands
         start_date: 2025-11
         end_date: present
-        summary: Team member of the DevOps team, helping customers accelerate delivery with GitHub, Azure DevOps and GitHub Copilot.
+        summary: Delta-N is Microsoft partner in 'Agentic DevOps on Azure with GitHub'
         highlights:
-          - Helping customers with their migration from Azure DevOps towards GitHub Enterprise Cloud.
+          - Leading our efforts together with Microsoft and GitHub to help customers with their migration from Azure DevOps towards GitHub Enterprise Cloud.
           - Spearheading the Agentic DevOps with Microsoft Azure and GitHub specialization; responsible for collecting evidence for the Microsoft audit.
+          - Delivering hands-on workshops and trainings on GitHub, GitHub Copilot, and GitHub Advanced Security.
           - "Worked with: GitHub Enterprise Cloud, GitHub Advanced Security, GitHub Copilot, Entra ID, Azure DevOps."
 
       - company: Navara
@@ -36,7 +37,6 @@ cv:
         location: The Netherlands
         start_date: 2024-10
         end_date: 2026-10
-        summary: Navara is a partner in 'Agentic DevOps on Azure with GitHub' at Microsoft and a Managed GitHub Partner.
         highlights:
           - Led Navara's strategic partner initiatives with Microsoft and GitHub, driving alignment, co-sell activities, and joint success.
           - Directed customer product evaluations, Proof of Value engagements, trainings, and large-scale adoption programs for GitHub Copilot and GitHub Advanced Security.
