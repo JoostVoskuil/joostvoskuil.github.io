@@ -103,7 +103,10 @@
 } /* Name.Function */
 .highlight .nl {
   color: #d0d0d0;
-} /* Name.Label */ /* Name.Namespace */ /* Name.Other */
+} /* Name.Label */ /* Name.Namespace */
+.highlight .nx {
+  color: #d0d0d0;
+} /* Name.Other */
 .highlight .py {
   color: #d0d0d0;
 } /* Name.Property */

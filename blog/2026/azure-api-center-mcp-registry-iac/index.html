@@ -1,0 +1,414 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> How to manage | Joost Voskuil Blog </title> <meta name="author" content="Joost Voskuil"> <meta name="description" content="Infrastructure as Code for Your Private MCP Registry on Azure API Center"> <meta name="keywords" content="DevOps, DevEx, continuousdelivery"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://foxhole.nl/blog/2026/azure-api-center-mcp-registry-iac/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Joost Voskuil Blog </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">How to manage</h1> <p class="post-meta"> Created on June 14, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/category/github"> <i class="fa-solid fa-tag fa-sm"></i> GitHub</a>   <a href="/blog/category/copilot"> <i class="fa-solid fa-tag fa-sm"></i> Copilot,</a>   <a href="/blog/category/mcp"> <i class="fa-solid fa-tag fa-sm"></i> MCP</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>In December 2025, Tajinder Singh published an excellent guide on <a href="https://devblogs.microsoft.com/all-things-azure/locking-down-mcp-create-a-private-registry-on-azure-api-center-and-enforce-it-in-github-copilot-and-vs-code/" rel="external nofollow noopener" target="_blank">creating a private MCP registry using Azure API Center</a>. That post walks you through the portal experience: clicking buttons, filling forms, and wiring the registry URL into GitHub Enterprise settings.</p> <p>But there is one big gap: <strong>how do you manage MCP servers as code?</strong></p> <p>The portal is fine for a quick demo. For production adoption, you need repeatable deployments, version control, pull request reviews, and CI/CD. This post fills that gap with a complete Bicep + PowerShell solution that deploys your entire MCP registry from code, including the undocumented API properties that the Azure documentation does not cover.</p> <h2 id="why-infrastructure-as-code">Why Infrastructure as Code</h2> <p>The portal works for adding servers manually. But when you have 10+ servers, multiple environments, and a team that needs to review changes, you need:</p> <ul> <li> <strong>Pull request workflow</strong> - changes to the registry go through code review</li> <li> <strong>Drift detection</strong> - deployed state matches source control</li> <li> <strong>Automated pruning</strong> - servers removed from code get removed from Azure</li> <li> <strong>Repeatable deployments</strong> - spin up identical registries for dev/test/prod</li> <li> <strong>Disaster recovery</strong> - rebuild the entire registry from a single <code class="language-plaintext highlighter-rouge">git clone</code> </li> </ul> <h2 id="the-problem-undocumented-api-surface">The Problem: Undocumented API Surface</h2> <p>If you open the Azure documentation for API Center’s MCP support, you will find instructions for the portal UI. What you will <em>not</em> find is:</p> <ul> <li>The full set of properties the <code class="language-plaintext highlighter-rouge">Microsoft.ApiCenter/services/workspaces/apis</code> resource accepts for MCP-type APIs</li> <li>How <code class="language-plaintext highlighter-rouge">remote</code>, <code class="language-plaintext highlighter-rouge">remoteType</code>, <code class="language-plaintext highlighter-rouge">securitySchemes</code>, <code class="language-plaintext highlighter-rouge">packages</code>, <code class="language-plaintext highlighter-rouge">authSchemas</code>, and <code class="language-plaintext highlighter-rouge">audience</code> map to the registry response</li> <li>How deployments with <code class="language-plaintext highlighter-rouge">runtimeUri</code> connect to the <code class="language-plaintext highlighter-rouge">/v0.1/servers</code> output</li> <li>The fact that an empty <code class="language-plaintext highlighter-rouge">description</code> field makes the server <strong>invisible</strong> to VS Code (a known bug confirmed by the product team)</li> </ul> <p>The <a href="https://github.com/Azure/MCP/blob/main/partners/server-schema.json" rel="external nofollow noopener" target="_blank">Azure MCP partner schema</a> defines the JSON structure for MCP servers, but the Azure Resource Manager (ARM) API for API Center does not have a 1:1 mapping with that schema. Some fields are accepted by the ARM API but not defined in the Bicep type system, which leads to compile-time errors if you try to use them directly.</p> <h2 id="architecture-overview">Architecture Overview</h2> <div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>api-center-mcp-registry/
+├── infra/
+│ ├── workspace.bicep # Reusable module: workspace + env + MCP servers
+│ └── workspaces/
+│ ├── default.bicep # Default workspace (loads JSON server defs)
+│ └── mcp-servers/ # One JSON file per MCP server
+│ ├── azure-devops-mcp-remote.json
+│ ├── figma-mcp-remote.json
+│ └── playwright-mcp.json
+├── deploy-workspace.ps1 # Deploy workspace + auto-prune
+└── common.psm1 # Shared PowerShell helpers
+</code></pre></div></div> <p>The key design decisions:</p> <ol> <li> <strong>One JSON file per server</strong> - easy to add/remove servers via PR</li> <li> <strong><code class="language-plaintext highlighter-rouge">loadJsonContent()</code> at compile time</strong> - Bicep reads JSON at build, no parameter files needed</li> <li> <strong>Automatic pruning</strong> - after deployment, servers not in the Bicep file get deleted from Azure</li> <li> <strong>Reusable workspace module</strong> - same Bicep works for any workspace name</li> </ol> <h2 id="step-1-deploy-api-center">Step 1: Deploy API Center</h2> <p>I assume you already have an Azure API Center service deployed. It is pretty easy to do it through Bicep.</p> <h2 id="step-2-define-mcp-servers-as-json">Step 2: Define MCP Servers as JSON</h2> <p>Each MCP server is a single JSON file. Here is a complete example for Figma:</p> <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"figma-mcp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figma MCP Server"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brings Figma design context directly into your AI workflow."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Figma MCP server brings Figma directly into your workflow by providing design information and context to AI agents generating code from Figma design files."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mcp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Partner"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalDocumentation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figma MCP Server Guide"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://developers.figma.com/docs/figma-mcp-server/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"remote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mcp.figma.com/mcp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"remoteType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"streamable-http"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"supportContactInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figma Support"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://help.figma.com/hc/en-us/articles/32132100833559"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figma Developer Terms"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.figma.com/legal/developer-terms/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer Tools"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars.githubusercontent.com/u/5155369?v=4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"useCases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Read designs"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retrieve objects and metadata from Figma files for AI code generation."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Write to canvas"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create and modify Figma content directly from your MCP client."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"securitySchemes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"figmaoauth2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oauth2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authenticate with Figma using OAuth2."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flows"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"authorizationCode"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"authorizationUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.figma.com/oauth"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tokenUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.figma.com/v1/oauth/token"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"refreshUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.figma.com/v1/oauth/refresh"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"scopes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"files:read"</span><span class="p">,</span><span class="w"> </span><span class="s2">"file_dev_resources:read"</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"authSchemas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"OAuth2"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"audience"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.figma.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"versionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-0-3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customProperties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"x-ms-preview"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div> <p>A second example for playwright without remote fields but with packages:</p> <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"playwright-mcp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Playwright MCP Server"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Browser automation using accessibility trees for testing and data extraction via MCP."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A Model Context Protocol server that provides browser automation capabilities using Playwright. Enables LLMs to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models. Fast, lightweight, and LLM-friendly with deterministic tool application."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"kind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mcp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalDocumentation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Playwright MCP on npm"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.npmjs.com/package/@playwright/mcp"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"packages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"registry_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@playwright/mcp"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latest"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"runtime_hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npx"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"runtime_arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"package_arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"environment_variables"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"supportContactInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Microsoft Playwright Team"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/microsoft/playwright-mcp/issues"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apache-2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/microsoft/playwright-mcp/blob/main/LICENSE"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Developer Tools"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars.githubusercontent.com/u/6154722?v=4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"useCases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Browser automation for LLMs"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Automate web browser interactions through structured accessibility tree data, enabling AI agents to navigate, click, fill forms, and extract content without vision models."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Web testing"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create and run browser-based tests using accessibility snapshots for deterministic, repeatable web application testing driven by AI agents."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data extraction"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Extract structured data from web pages by navigating and reading accessibility tree information, enabling AI-powered web scraping and content analysis."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Exploratory automation"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Support autonomous workflows that benefit from persistent browser state and iterative reasoning over page structure for self-healing tests or long-running automation."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"versionName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"latest"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"customProperties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"x-ms-preview"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div> <p>Now this is allot of information. You can peek at the formal <a href="https://api.mcp.github.com/v0/servers" rel="external nofollow noopener" target="_blank">GitHub MCP Registry</a> to get inspired.</p> <h3 id="required-fields">Required Fields</h3> <table> <thead> <tr> <th>Field</th> <th>Purpose</th> </tr> </thead> <tbody> <tr> <td><code class="language-plaintext highlighter-rouge">name</code></td> <td>Unique identifier (becomes the API resource name)</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">title</code></td> <td>Display name in VS Code</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">summary</code></td> <td>Short one-liner shown in extension list</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">description</code></td> <td> <strong>Must not be empty</strong> or server is invisible to VS Code</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">kind</code></td> <td>Always <code class="language-plaintext highlighter-rouge">"mcp"</code> </td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">externalDocumentation</code></td> <td>Link shown to users</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">versionName</code></td> <td>Version label (e.g. <code class="language-plaintext highlighter-rouge">"original"</code> or <code class="language-plaintext highlighter-rouge">"1-0-3"</code>)</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">customProperties</code></td> <td>Required object, can be <code class="language-plaintext highlighter-rouge">{}</code> </td> </tr> </tbody> </table> <h3 id="remote-server-fields">Remote Server Fields</h3> <p>For servers hosted externally (most MCP servers today):</p> <table> <thead> <tr> <th>Field</th> <th>Purpose</th> </tr> </thead> <tbody> <tr> <td><code class="language-plaintext highlighter-rouge">remote</code></td> <td>The MCP endpoint URL</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">remoteType</code></td> <td> <code class="language-plaintext highlighter-rouge">"streamable-http"</code> or <code class="language-plaintext highlighter-rouge">"sse"</code> </td> </tr> </tbody> </table> <p>When <code class="language-plaintext highlighter-rouge">remote</code> is set, the Bicep automatically creates a deployment resource with <code class="language-plaintext highlighter-rouge">runtimeUri</code> pointing to that URL. This is what makes the server appear in the <code class="language-plaintext highlighter-rouge">/v0.1/servers</code> response with a working <code class="language-plaintext highlighter-rouge">remotes</code> array.</p> <h3 id="package-based-server-fields">Package-based Server Fields</h3> <p>For servers distributed as runnable packages instead of hosted endpoints:</p> <table> <thead> <tr> <th>Field</th> <th>Purpose</th> </tr> </thead> <tbody> <tr> <td><code class="language-plaintext highlighter-rouge">packages</code></td> <td>Array of package descriptors used by the MCP client</td> </tr> </tbody> </table> <p>Each package entry can include values such as:</p> <ul> <li> <code class="language-plaintext highlighter-rouge">registry_name</code> - package registry identifier such as <code class="language-plaintext highlighter-rouge">npm</code> </li> <li> <code class="language-plaintext highlighter-rouge">name</code> - package name, for example <code class="language-plaintext highlighter-rouge">@playwright/mcp</code> </li> <li> <code class="language-plaintext highlighter-rouge">version</code> - package version or tag such as <code class="language-plaintext highlighter-rouge">latest</code> </li> <li> <code class="language-plaintext highlighter-rouge">runtime_hint</code> - how the client should launch it, for example <code class="language-plaintext highlighter-rouge">npx</code> </li> <li> <code class="language-plaintext highlighter-rouge">runtime_arguments</code>, <code class="language-plaintext highlighter-rouge">package_arguments</code>, <code class="language-plaintext highlighter-rouge">environment_variables</code> - optional execution metadata</li> </ul> <h3 id="optional-enrichment-fields">Optional Enrichment Fields</h3> <table> <thead> <tr> <th>Field</th> <th>Purpose</th> </tr> </thead> <tbody> <tr> <td><code class="language-plaintext highlighter-rouge">vendor</code></td> <td> <code class="language-plaintext highlighter-rouge">"Partner"</code> or organization name</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">icon</code></td> <td>URL to avatar/icon image</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">useCases</code></td> <td>Array of <code class="language-plaintext highlighter-rouge">{name, description}</code> objects</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">categories</code></td> <td>Category string (e.g. <code class="language-plaintext highlighter-rouge">"Developer Tools"</code>)</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">supportContactInfo</code></td> <td> <code class="language-plaintext highlighter-rouge">{name, url}</code> for support</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">license</code></td> <td> <code class="language-plaintext highlighter-rouge">{name, url}</code> for license info</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">securitySchemes</code></td> <td>OAuth2/API key definitions</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">authSchemas</code></td> <td>Array like <code class="language-plaintext highlighter-rouge">["OAuth2"]</code> </td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">audience</code></td> <td>Token audience URL</td> </tr> </tbody> </table> <h2 id="step-3-the-workspace-bicep-module">Step 3: The Workspace Bicep Module</h2> <p>This is the core module that turns JSON definitions into Azure resources. The key challenge: <strong>Bicep’s type system does not know about all MCP properties</strong>. The ARM API accepts them, but Bicep validation rejects unknown fields.</p> <p>The solution: wrap properties in <code class="language-plaintext highlighter-rouge">any(union(...))</code> to bypass compile-time type checks:</p> <div class="language-bicep highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">param</span> <span class="n">serviceName</span> <span class="kt">string</span>
+<span class="k">param</span> <span class="n">workspaceName</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'default'</span>
+<span class="k">param</span> <span class="n">workspaceTitle</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'Default workspace'</span>
+<span class="k">param</span> <span class="n">workspaceDescription</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'Default workspace'</span>
+<span class="k">param</span> <span class="n">environmentName</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'default-mcp-env'</span>
+<span class="k">param</span> <span class="n">environmentTitle</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'Default MCP Environment'</span>
+<span class="k">param</span> <span class="n">environmentKind</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'Production'</span>
+<span class="k">param</span> <span class="n">mcpServers</span> <span class="kt">array</span> <span class="p">=</span> <span class="p">[]</span>
+
+<span class="k">resource</span> <span class="n">apiCenterService</span> <span class="s1">'Microsoft.ApiCenter/services@2024-06-01-preview'</span> <span class="k">existing</span> <span class="p">=</span> <span class="pi">{</span>
+  <span class="py">name</span><span class="p">:</span> <span class="n">serviceName</span>
+<span class="pi">}</span>
+
+<span class="k">resource</span> <span class="n">workspace</span> <span class="s1">'Microsoft.ApiCenter/services/workspaces@2024-06-01-preview'</span> <span class="p">=</span> <span class="pi">{</span>
+  <span class="py">parent</span><span class="p">:</span> <span class="n">apiCenterService</span>
+  <span class="py">name</span><span class="p">:</span> <span class="n">workspaceName</span>
+  <span class="py">properties</span><span class="p">:</span> <span class="pi">{</span>
+    <span class="py">title</span><span class="p">:</span> <span class="n">workspaceTitle</span>
+    <span class="py">description</span><span class="p">:</span> <span class="n">workspaceDescription</span>
+  <span class="pi">}</span>
+<span class="pi">}</span>
+
+<span class="k">resource</span> <span class="n">mcpEnvironment</span> <span class="s1">'Microsoft.ApiCenter/services/workspaces/environments@2024-06-01-preview'</span> <span class="p">=</span> <span class="pi">{</span>
+  <span class="py">parent</span><span class="p">:</span> <span class="n">workspace</span>
+  <span class="py">name</span><span class="p">:</span> <span class="n">environmentName</span>
+  <span class="py">properties</span><span class="p">:</span> <span class="pi">{</span>
+    <span class="py">title</span><span class="p">:</span> <span class="n">environmentTitle</span>
+    <span class="py">kind</span><span class="p">:</span> <span class="n">environmentKind</span>
+    <span class="py">description</span><span class="p">:</span> <span class="s1">'</span><span class="si">${</span><span class="n">workspaceName</span><span class="si">}</span><span class="s1"> MCP environment'</span>
+    <span class="py">customProperties</span><span class="p">:</span> <span class="pi">{}</span>
+  <span class="pi">}</span>
+<span class="pi">}</span>
+
+<span class="k">resource</span> <span class="n">mcpServerApis</span> <span class="s1">'Microsoft.ApiCenter/services/workspaces/apis@2024-06-01-preview'</span> <span class="p">=</span> <span class="p">[</span><span class="k">for</span> <span class="n">server</span> <span class="k">in</span> <span class="n">mcpServers</span><span class="p">:</span> <span class="pi">{</span>
+  <span class="py">parent</span><span class="p">:</span> <span class="n">workspace</span>
+  <span class="py">name</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">name</span>
+  <span class="py">properties</span><span class="p">:</span> <span class="n">any</span><span class="p">(</span><span class="nf">union</span><span class="p">(</span>
+    <span class="pi">{</span>
+      <span class="py">title</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">title</span>
+      <span class="py">summary</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">summary</span>
+      <span class="py">description</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">description</span>
+      <span class="py">kind</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">kind</span>
+      <span class="py">externalDocumentation</span><span class="p">:</span> <span class="p">[</span><span class="n">server</span><span class="p">.</span><span class="n">externalDocumentation</span><span class="p">]</span>
+      <span class="py">customProperties</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">customProperties</span>
+    <span class="pi">}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'packages'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">packages</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">packages</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'vendor'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">vendor</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">vendor</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'icon'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">icon</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">icon</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'useCases'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">useCases</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">useCases</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'categories'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">categories</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">categories</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'supportContactInfo'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">supportContactInfo</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">supportContactInfo</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'license'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">license</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">license</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'remote'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">remote</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">remote</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'remoteType'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">remoteType</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">remoteType</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'securitySchemes'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">securitySchemes</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">securitySchemes</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'authSchemas'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">authSchemas</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">authSchemas</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span><span class="p">,</span>
+    <span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'audience'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">audience</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">audience</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span>
+  <span class="p">))</span>
+<span class="pi">}</span><span class="p">]</span>
+
+<span class="k">resource</span> <span class="n">mcpServerVersions</span> <span class="s1">'Microsoft.ApiCenter/services/workspaces/apis/versions@2024-06-01-preview'</span> <span class="p">=</span> <span class="p">[</span><span class="k">for</span> <span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="k">in</span> <span class="n">mcpServers</span><span class="p">:</span> <span class="pi">{</span>
+  <span class="py">parent</span><span class="p">:</span> <span class="n">mcpServerApis</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  <span class="py">name</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">versionName</span>
+  <span class="py">properties</span><span class="p">:</span> <span class="pi">{</span>
+    <span class="py">title</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">versionName</span>
+    <span class="py">lifecycleStage</span><span class="p">:</span> <span class="s1">'production'</span>
+  <span class="pi">}</span>
+<span class="pi">}</span><span class="p">]</span>
+
+<span class="k">resource</span> <span class="n">mcpServerDefinitions</span> <span class="s1">'Microsoft.ApiCenter/services/workspaces/apis/versions/definitions@2024-06-01-preview'</span> <span class="p">=</span> <span class="p">[</span><span class="k">for</span> <span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="k">in</span> <span class="n">mcpServers</span><span class="p">:</span> <span class="pi">{</span>
+  <span class="py">parent</span><span class="p">:</span> <span class="n">mcpServerVersions</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  <span class="py">name</span><span class="p">:</span> <span class="s1">'default-definition'</span>
+  <span class="py">properties</span><span class="p">:</span> <span class="pi">{</span>
+    <span class="py">title</span><span class="p">:</span> <span class="s1">'Definition for </span><span class="si">${</span><span class="n">server</span><span class="p">.</span><span class="n">title</span><span class="si">}</span><span class="s1">'</span>
+    <span class="py">description</span><span class="p">:</span> <span class="s1">'Auto-generated definition for </span><span class="si">${</span><span class="n">server</span><span class="p">.</span><span class="n">title</span><span class="si">}</span><span class="s1">'</span>
+  <span class="pi">}</span>
+<span class="pi">}</span><span class="p">]</span>
+
+<span class="k">resource</span> <span class="n">mcpServerDeployments</span> <span class="s1">'Microsoft.ApiCenter/services/workspaces/apis/deployments@2024-06-01-preview'</span> <span class="p">=</span> <span class="p">[</span><span class="k">for</span> <span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> <span class="k">in</span> <span class="n">mcpServers</span><span class="p">:</span> <span class="k">if</span> <span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'remote'</span><span class="p">))</span> <span class="pi">{</span>
+  <span class="py">parent</span><span class="p">:</span> <span class="n">mcpServerApis</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  <span class="py">name</span><span class="p">:</span> <span class="s1">'default-deployment'</span>
+  <span class="py">dependsOn</span><span class="p">:</span> <span class="p">[</span>
+    <span class="n">mcpEnvironment</span>
+    <span class="n">mcpServerDefinitions</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  <span class="p">]</span>
+  <span class="py">properties</span><span class="p">:</span> <span class="pi">{</span>
+    <span class="py">title</span><span class="p">:</span> <span class="s1">'Deployment to </span><span class="si">${</span><span class="n">environmentName</span><span class="si">}</span><span class="s1">'</span>
+    <span class="py">environmentId</span><span class="p">:</span> <span class="s1">'/workspaces/</span><span class="si">${</span><span class="n">workspaceName</span><span class="si">}</span><span class="s1">/environments/</span><span class="si">${</span><span class="n">environmentName</span><span class="si">}</span><span class="s1">'</span>
+    <span class="py">definitionId</span><span class="p">:</span> <span class="s1">'/workspaces/</span><span class="si">${</span><span class="n">workspaceName</span><span class="si">}</span><span class="s1">/apis/</span><span class="si">${</span><span class="n">server</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s1">/versions/</span><span class="si">${</span><span class="n">server</span><span class="p">.</span><span class="n">versionName</span><span class="si">}</span><span class="s1">/definitions/default-definition'</span>
+    <span class="py">server</span><span class="p">:</span> <span class="pi">{</span>
+      <span class="py">runtimeUri</span><span class="p">:</span> <span class="p">[</span><span class="n">server</span><span class="p">.</span><span class="n">remote</span><span class="p">]</span>
+    <span class="pi">}</span>
+    <span class="py">customProperties</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">customProperties</span>
+  <span class="pi">}</span>
+<span class="pi">}</span><span class="p">]</span>
+</code></pre></div></div> <h3 id="why-anyunion">Why <code class="language-plaintext highlighter-rouge">any(union(...))</code>?</h3> <p>The <code class="language-plaintext highlighter-rouge">Microsoft.ApiCenter/services/workspaces/apis</code> Bicep type definition only knows about a subset of properties. Fields like <code class="language-plaintext highlighter-rouge">remote</code>, <code class="language-plaintext highlighter-rouge">remoteType</code>, <code class="language-plaintext highlighter-rouge">securitySchemes</code>, and <code class="language-plaintext highlighter-rouge">authSchemas</code> are accepted by the ARM API but not in the Bicep type. Without <code class="language-plaintext highlighter-rouge">any()</code>, you get compile errors. Without <code class="language-plaintext highlighter-rouge">union()</code> with conditional merges, you pass <code class="language-plaintext highlighter-rouge">null</code> values that the API rejects.</p> <p>This pattern:</p> <div class="language-bicep highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">contains</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="s1">'remote'</span><span class="p">)</span> <span class="err">?</span> <span class="pi">{</span> <span class="py">remote</span><span class="p">:</span> <span class="n">server</span><span class="p">.</span><span class="n">remote</span> <span class="pi">}</span> <span class="p">:</span> <span class="pi">{}</span>
+</code></pre></div></div> <p>Only includes the property when the JSON file defines it. Empty objects merge cleanly with <code class="language-plaintext highlighter-rouge">union()</code>.</p> <h2 id="step-4-wire-it-up-with-loadjsoncontent">Step 4: Wire It Up with loadJsonContent</h2> <p>The workspace-specific Bicep file loads all server JSONs at compile time:</p> <div class="language-bicep highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">param</span> <span class="n">serviceName</span> <span class="kt">string</span>
+<span class="k">param</span> <span class="n">environmentName</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'default-mcp-env'</span>
+<span class="k">param</span> <span class="n">environmentTitle</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'Default MCP Environment'</span>
+<span class="k">param</span> <span class="n">environmentKind</span> <span class="kt">string</span> <span class="p">=</span> <span class="s1">'Production'</span>
+
+<span class="k">var</span> <span class="n">workspaceName</span> <span class="p">=</span> <span class="s1">'default'</span>
+<span class="k">var</span> <span class="n">workspaceTitle</span> <span class="p">=</span> <span class="s1">'Default workspace'</span>
+<span class="k">var</span> <span class="n">workspaceDescription</span> <span class="p">=</span> <span class="s1">'Default workspace'</span>
+
+<span class="k">var</span> <span class="n">mcpServers</span> <span class="p">=</span> <span class="p">[</span>
+  <span class="nf">loadJsonContent</span><span class="p">(</span><span class="s1">'./mcp-servers/azure-devops-mcp-remote.json'</span><span class="p">)</span>
+  <span class="nf">loadJsonContent</span><span class="p">(</span><span class="s1">'./mcp-servers/datadog-mcp-remote.json'</span><span class="p">)</span>
+  <span class="nf">loadJsonContent</span><span class="p">(</span><span class="s1">'./mcp-servers/figma-mcp-remote.json'</span><span class="p">)</span>
+  <span class="nf">loadJsonContent</span><span class="p">(</span><span class="s1">'./mcp-servers/playwright-mcp.json'</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">module</span> <span class="n">workspace</span> <span class="s1">'../workspace.bicep'</span> <span class="p">=</span> <span class="pi">{</span>
+  <span class="py">name</span><span class="p">:</span> <span class="s1">'workspace-</span><span class="si">${</span><span class="n">workspaceName</span><span class="si">}</span><span class="s1">'</span>
+  <span class="py">params</span><span class="p">:</span> <span class="pi">{</span>
+    <span class="py">serviceName</span><span class="p">:</span> <span class="n">serviceName</span>
+    <span class="py">workspaceName</span><span class="p">:</span> <span class="n">workspaceName</span>
+    <span class="py">workspaceTitle</span><span class="p">:</span> <span class="n">workspaceTitle</span>
+    <span class="py">workspaceDescription</span><span class="p">:</span> <span class="n">workspaceDescription</span>
+    <span class="py">environmentName</span><span class="p">:</span> <span class="n">environmentName</span>
+    <span class="py">environmentTitle</span><span class="p">:</span> <span class="n">environmentTitle</span>
+    <span class="py">environmentKind</span><span class="p">:</span> <span class="n">environmentKind</span>
+    <span class="py">mcpServers</span><span class="p">:</span> <span class="n">mcpServers</span>
+  <span class="pi">}</span>
+<span class="pi">}</span>
+</code></pre></div></div> <p>Adding a new server: create the JSON file, add one line here, deploy.</p> <h2 id="step-5-automatic-pruning">Step 5: Automatic Pruning</h2> <p>When you remove a server from code, you also want it removed from Azure. The <code class="language-plaintext highlighter-rouge">deploy-workspace.ps1</code> script handles this after deployment:</p> <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Parse which servers are referenced in the Bicep file</span><span class="w">
+</span><span class="nv">$desiredServerIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">@(</span><span class="w">
+    </span><span class="err">Select-String</span><span class="w"> </span><span class="err">-Path</span><span class="w"> </span><span class="nv">$templateFile</span><span class="w"> </span><span class="err">-Pattern</span><span class="w"> </span><span class="s2">"loadJsonContent\('([^']+)'\)"</span><span class="w"> </span><span class="err">-AllMatches</span><span class="w"> </span><span class="err">|</span><span class="w">
+        </span><span class="err">ForEach-Object</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="bp">$_</span><span class="o">.</span><span class="nf">Matches</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">|</span><span class="w">
+        </span><span class="err">ForEach-Object</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nv">$jsonPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Join-Path</span><span class="w"> </span><span class="p">(</span><span class="n">Split-Path</span><span class="w"> </span><span class="nv">$templateFile</span><span class="p">)</span><span class="w"> </span><span class="bp">$_</span><span class="o">.</span><span class="n">Groups</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="nf">Value</span><span class="w">
+            </span><span class="nx">if</span><span class="w"> </span><span class="p">(</span><span class="n">Test-Path</span><span class="w"> </span><span class="nv">$jsonPath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="p">(</span><span class="n">Get-Content</span><span class="w"> </span><span class="nv">$jsonPath</span><span class="w"> </span><span class="nt">-Raw</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ConvertFrom-Json</span><span class="p">)</span><span class="o">.</span><span class="nf">name</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Where-Object</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="bp">$_</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span><span class="p">)</span><span class="w">
+
+</span></code></pre></div></div> <p>The pruning function lists all APIs in the workspace via the ARM REST API, filters for <code class="language-plaintext highlighter-rouge">kind: mcp</code>, and deletes any that are not in the desired set. This means your code is the single source of truth.</p> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2025/azureboards-github-integration-advanced/">Multiple Azure Boards organizations / one GitHub organization integration</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/managed-devops-pools/">Managed DevOps Pools in Bicep</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/what-we-can-learn-from-spacex-regarding-devops/">What We Can Learn from SpaceX Regarding DevOps</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2016/spec-by-example-and-mbot/">Serious Gaming – Learn Specification by Example with the mBot</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2016/10-years-of-testing/">10 years of testing - from covering your ass to accelerating feedbackloops</a> </li> </ul> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Joost Voskuil. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: June 15, 2026. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "about",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-cv",
+          title: "cv",
+          description: "Here you can find my resume",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "post-how-to-manage",
+        
+          title: "How to manage",
+        
+        description: "Infrastructure as Code for Your Private MCP Registry on Azure API Center",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/azure-api-center-mcp-registry-iac/";
+          
+        },
+      },{id: "post-multiple-azure-boards-organizations-one-github-organization-integration",
+        
+          title: "Multiple Azure Boards organizations / one GitHub organization integration",
+        
+        description: "This blog explains how to set-up an advanced way configuring Azure Boards / GitHub integration with multiple Azure DevOps organizations backed by different Entra ID&#39;s.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/azureboards-github-integration-advanced/";
+          
+        },
+      },{id: "post-managed-devops-pools-in-bicep",
+        
+          title: "Managed DevOps Pools in Bicep",
+        
+        description: "This blog explains how you can deploy Managed DevOps Pools with Bicep",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/managed-devops-pools/";
+          
+        },
+      },{id: "post-what-we-can-learn-from-spacex-regarding-devops",
+        
+          title: "What We Can Learn from SpaceX Regarding DevOps",
+        
+        description: "A real revolution in space technology is happening right now. SpaceX, the company of Elon Musk, accounts for 80 percent of the total mass brought into space. This number will rapidly increase to 90 percent. Many people are critical of Elon Musk. For this blog, we need to look beyond his ego and focus on how the engineers on the ground are working. In my opinion, SpaceX&#39;s success is due to their approach. Within DevOps, we can learn a lot from them. In this blog, I want to discuss the difference between NASA and SpaceX (both developing a new rocket) and what makes SpaceX so unique.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/what-we-can-learn-from-spacex-regarding-devops/";
+          
+        },
+      },{id: "post-serious-gaming-learn-specification-by-example-with-the-mbot",
+        
+          title: "Serious Gaming – Learn Specification by Example with the mBot",
+        
+        description: "This is a little story about my journey as a tester",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2016/spec-by-example-and-mbot/";
+          
+        },
+      },{id: "post-10-years-of-testing-from-covering-your-ass-to-accelerating-feedbackloops",
+        
+          title: "10 years of testing - from covering your ass to accelerating feedbackloops",
+        
+        description: "This is a little story about my journey as a tester",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2016/10-years-of-testing/";
+          
+        },
+      },{id: "news-while-i-had-this-idea-for-years-i-finally-started-my-own-website-for-blogging-and-sharing-my-ideas-it-39-s-mostly-lightweight-content-often-work-related-some-posts-will-be-in-english-and-some-will-be-in-dutch-of-course-as-always-my-opinions-are-my-own-they-are-work-related-but-not-connected-to-my-employer-or-any-marketing-for-this-website-i-am-using-github-pages-and-jekyll",
+          title: 'While I had this idea for years, I finally started my own website...',
+          description: "",
+          section: "News",},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%6A%6F%6F%73%74@%66%6F%78%68%6F%6C%65.%6E%6C", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/JoostVoskuil", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/jvoskuil", "_blank");
+        },
+      },{
+        id: 'social-rss',
+        title: 'RSS Feed',
+        section: 'Socials',
+        handler: () => {
+          window.open("/feed.xml", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
