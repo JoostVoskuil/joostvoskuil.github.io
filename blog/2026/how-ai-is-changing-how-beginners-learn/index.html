@@ -1,0 +1,175 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> How AI is changing how beginners learn in our field | Joost Voskuil Blog </title> <meta name="author" content="Joost Voskuil"> <meta name="description" content="How AI is changing how beginners learn in our field"> <meta name="keywords" content="DevOps, DevEx, continuousdelivery"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://foxhole.nl/blog/2026/how-ai-is-changing-how-beginners-learn/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Joost Voskuil Blog </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">How AI is changing how beginners learn in our field</h1> <p class="post-meta"> Created on June 15, 2026 </p> <p class="post-tags"> <a href="/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>   ·   <a href="/blog/category/learning"> <i class="fa-solid fa-tag fa-sm"></i> Learning</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <p>GitHub Copilot and similar AI assistants have changed software development. Code that used to take days can now be produced in hours. That is impressive. But speed is not the only thing changing. You no longer have to understand something to build it, and that has major consequences for how beginners in our field learn. Can we still train them into strong engineers? What is changing in the learning process? And how do you guide that well as an experienced engineer? That is what this article is about.</p> <h2 id="the-engineering-compass">The engineering compass</h2> <p>In the GitHub Copilot workshops I run, I see a clear pattern. Experienced developers increasingly use GenAI to learn a new language or technology. They let AI generate working sample code quickly, but they recognize patterns and architectural principles they have known for years. They have a professional compass. Russinovich and Hanselman describe this in <em>Redefining the Software Engineering Profession for AI</em>: experienced engineers feel an immediate productivity boost because their context and judgment are already well developed.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/kompass-480.webp 480w,/assets/img/kompass-800.webp 800w,/assets/img/kompass-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/kompass.png" class="img-fluid rounded z-depth-0" width="100%" height="auto" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> <p>Beginners lack that compass. With AI, they too can quickly build something that works, but without the mental framework to judge whether that solution will still hold tomorrow: is the architecture sound? is it secure? will it scale? can it be maintained? An experienced developer asks those questions automatically. The difference between junior and senior is no longer about building something that works, but about judging whether what works is also <em>right</em>.</p> <p>On top of that, fast, visible progress feels rewarding: you change something, it works, you want to keep going. For a beginner, the reward is no longer a line of code, but a complete feature. That reward arrives before real understanding does. In <em>Thinking, Fast and Slow</em>, Daniel Kahneman describes exactly this trap: System 1 says, “it works, we’re done,” while System 2 asks, “do I understand why it works, when it fails, and what I would do differently?” Vibe coding—prompting until something works without truly understanding it—is exactly the System 1 path. It feels productive and looks productive, but it does not build craftsmanship.</p> <h2 id="investing-in-beginners-is-becoming-a-better-bet-but-not-automatically">Investing in beginners is becoming a better bet, but not automatically</h2> <p>Kent Beck frames this as an investment question. Every beginner you hire is a bet: onboarding, coaching, and review cost more than the output initially returns. Beck calls the period until the break-even point the <em>Valley of Regret</em>. Traditionally, that valley lasts about 24 months on average. With annual attrition of 20%, roughly 36% of beginners leave the organization before reaching that point. The investment evaporates.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/learningcurve.webp" sizes="95vw"></source> <img src="/assets/img/learningcurve.webp" class="img-fluid rounded z-depth-0" width="100%" height="auto" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> <p>AI can improve that equation, but only if you use it intentionally. Beck shows that a well-guided team of beginners using AI tools can compress that valley to around 9 months, with early attrition around 15%. The mechanism is simple: a beginner who used to spend three hours finding a suitable API now has options on the table in twenty minutes. But that freed-up time is not a bonus for the next feature. It is time you should invest in weighing those options and building independent judgment. Beck calls this: <em>learning fast becomes a habit</em>.</p> <h2 id="how-learning-used-to-work-and-how-ai-disrupts-it">How learning used to work, and how AI disrupts it</h2> <p>In the past, when you started as a beginner in a team, the build process itself carried understanding. You had to grasp a concept before you could get it working, because a copy-paste from Stack Overflow rarely fit directly. Your mentor demonstrated, then you worked together, and only afterward did you continue on your own. Collins, Brown, and Newman call this <em>cognitive apprenticeship</em>: learning through modeling and coaching, with guidance gradually fading as the learner becomes able to articulate their own reasoning.</p> <p>AI breaks that chain if you are not careful. The beginner gets working code immediately, without an expert making the thinking visible and without being forced to explain that thinking themselves. Guidance therefore shifts from helping build to helping make sound decisions, with deliberate room for reflection.</p> <p>Research confirms this tension. Chen and Cheung (2025) analyzed 57 studies with 5,389 students: GenAI has a large positive effect on performance and higher-order thinking, but the effect on metacognition (monitoring and adjusting your own learning process) is not statistically significant. That is exactly the skill a beginner needs to avoid falling into the System 1 trap.</p> <p>Kazemitabaar et al. (2023) zoomed in further. In a controlled study with 69 young people (ages 10–17), half learned Python with access to AI and half without. The AI group completed 1.15 times more tasks, scored 1.8 times higher on correctness, and made significantly fewer errors. Crucially, on code-modification tasks completed <em>without</em> AI, both groups performed similarly. AI did not harm manual skill.</p> <p>But the study also shows where things go wrong. On average, final solutions were 63% identical to what AI had generated. In 49% of tasks, the AI-generated code was submitted without the beginner changing a single line. That pattern was strongest in more complex topics like loops (60%) and arrays (52%)—exactly the moments when you would want someone to think just a little more deeply. What makes this especially concerning: this was not evenly distributed. 10 of 33 learners in the AI group did this in fewer than 4 out of 45 tasks. But 14 of 33 did it in more than half. One part of the group learned actively with AI; another part learned the shortest path to an approved submission. And beginners with more prior knowledge benefited significantly more from AI than those with less. AI strengthens an existing compass; it does not build a new one.</p> <h2 id="a-deliberate-framework-4mat">A deliberate framework: 4MAT</h2> <p>When code is fast and cheap to produce, it becomes more important that a beginner learns how to make choices and test assumptions. That requires a deliberate framework, instead of an implicit process where you improvise and hope learning happens by itself. Bernice McCarthy’s 4MAT learning cycle offers such a framework. Four phases, each with a key question:</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/4mat-model-480.webp 480w,/assets/img/4mat-model-800.webp 800w,/assets/img/4mat-model-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/4mat-model.jpg" class="img-fluid rounded z-depth-0" width="100%" height="auto" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> <p><strong>Experiencing (Why?)</strong>: <em>why does this problem matter?</em> AI makes it easy to find relevance: one prompt and you can see how a concept works in practice. But beginners who never have to discover relevance themselves are slower to build independent judgment. Motivation comes easily; the compass does not.</p> <p><strong>Conceptualising (What?)</strong>: <em>which concepts are at play here, and which principles determine whether a solution is good enough?</em> AI is the new first layer of knowledge: explanations, examples, and debugging support are always available. This shifts the core skill from “knowing frameworks” to asking the right questions and evaluating output. The risk is an illusion of understanding: you see lots of working code and think you understand it, while in reality you only had it generated.</p> <p><strong>Applying (How?)</strong>: <em>build a small, focused experiment.</em> In the spirit of Farley: write down what you expect before prompting AI. That is a hypothesis in testable form. AI dramatically accelerates execution, from API to test to deployment. But that shifts the real bottleneck: not writing code, but validating and integrating it into a larger system. Architectural thinking, test discipline, and debugging become core skills.</p> <p><strong>Refining (What if?)</strong>: <em>what does this outcome imply for variants, scalability, and risk?</em> With AI, rapid prototyping is trivial: you can explore multiple architectures in hours and generate variants on demand. This lets beginners operate earlier as mid-level experimenters. But too many options without anchors leads to decision fatigue. Good developers explore fast and choose fast. Guidance shifts toward evaluation and trade-off thinking.</p> <p>AI compresses the cycle, but shifts the pressure. The bottleneck used to be writing code (<em>How</em>). Now the bottlenecks are understanding systems (<em>What</em>), choosing direction (<em>Why</em>), and making decisions under uncertainty (<em>What if</em>). A senior can no longer just delegate tasks and review output afterward. You also need to delegate thinking: the beginner learns to formulate <em>Why</em> and <em>What</em> before AI accelerates the <em>How</em>. That is exactly what the Kazemitabaar study shows. Productivity and learning diverge if the learning environment does not actively prevent it.</p> <h2 id="what-this-means-for-the-mentor">What this means for the mentor</h2> <p>The value of your guidance is no longer in explaining how to build something. AI can do that faster. The value is in developing professional judgment: why choose this route, which assumptions are embedded in it, and when is “good” not good enough?</p> <p>Concretely:</p> <ul> <li> <strong>Delegate thinking, not just work.</strong> Have the beginner first make context, hypothesis, and quality criteria explicit. Then AI can help with implementation.</li> <li> <strong>Review reasoning, not just code.</strong> Which alternatives were explored? Why does this solution fit? What changed in the original assumption after the experiment?</li> <li> <strong>Adapt to learning style.</strong> A doer does not need encouragement to experiment, but does need encouragement to slow down: what do you expect will happen? A thinker sometimes needs a push to start the prototype, even if the model does not feel complete yet. A dreamer needs room to recognize patterns. A decider sometimes needs to slow down and compare two outcomes before creating a third.</li> <li> <strong>Do not correct too quickly.</strong> Fixing a half-good AI solution feels efficient, but it removes the learning moment. Let the beginner explain what is solid, what is doubtful, and what they would do differently.</li> </ul> <p>The best mentor is the one who helps beginners practice senior behavior sooner—not through more tasks, but through ownership of reasoning, choosing, and validating. My main tip: slow beginners down and ask deeper questions when it seems too easy. AI already does the fast work. Your role is to help place that fast work into a sustainable framework.</p> <h2 id="what-this-requires-from-organizations-and-educational-institutions">What this requires from organizations and educational institutions</h2> <p>Mentors create the daily learning moments. But leaders decide whether mentors get the space and incentives to do so. Without that space, the effect evaporates.</p> <p>Anyone deploying AI without a deliberate development strategy buys short-term speed while building long-term debt in knowledge and quality. That is exactly the risk Jeen Beckers describes as “digital suicide”: more output on paper, but less learning capacity in your team. His point is sharp: fewer junior intakes, seniors mainly cleaning up AI debris, and rising maintenance burden. AI appears to accelerate you, but in practice you are just pushing quality debt forward.</p> <p>On top of that, a toxic dependency loop emerges: management optimizes for throughput, teams receive fast solutions “thrown over the wall,” and then the same organization must make that mess sustainable. Panic often leads to a staffing IV-drip: more external hires for short-term capacity. But every temporary expert who leaves takes context with them. Without internal growth of people and knowledge, your digital autonomy is gradually hollowed out.</p> <p>If you evaluate only output, you reward superficial speed. If you also evaluate justification, validation, and reflection, you reward professional maturity. For companies, that means: do not steer only on “features per sprint,” but also on how quickly beginners learn to reason, spot risks, and explain choices. As Kent Beck describes, the time you gain from faster implementation must be consciously reinvested in the learning loop. Not immediately into more output, but into understanding, trade-offs, and craftsmanship.</p> <p>That is why Delta-N invests in educational partnerships, guest lectures, and mentoring graduating students on realistic challenges. In that practice, students experience that AI makes them faster—and that professional judgment determines whether that speed also creates sustainable value.</p> <h2 id="closing">Closing</h2> <p>Building is getting faster. The value of pure code production is declining. The value of conceptual reasoning is increasing. That is not a weakening of the profession, but a deepening.</p> <p>A strong professional does not just show that something works, but also why it works, when it can fail, and how that leads to a better next decision. That is where durable craftsmanship begins.</p> <hr> <h2 id="sources">Sources</h2> <ul> <li>Beck, K. (2024). <em>The Bet on Juniors Just Got Better</em>. Tidy First, Substack. <a href="https://newsletter.kentbeck.com/p/the-bet-on-juniors-just-got-better?utm_source=publication-search" rel="external nofollow noopener" target="_blank">tidyfirst.substack.com</a> </li> <li>Beckers, J. (2024). <em>Zo plegen veel Nederlandse IT-organisaties digitale zelfmoord</em>. <a href="https://www.linkedin.com/pulse/zo-plegen-veel-nederlandse-it-organisaties-digitale-jeen-beckers-pph3e/?originalSubdomain=nl" rel="external nofollow noopener" target="_blank">LinkedIn</a> </li> <li>Chen, S., &amp; Cheung, A.C.K. (2025). <em>Effect of generative artificial intelligence on university students learning outcomes: A systematic review and meta-analysis</em>. Educational Research Review, 49, 100737. DOI: <a href="https://doi.org/10.1016/j.edurev.2025.100737" rel="external nofollow noopener" target="_blank">10.1016/j.edurev.2025.100737</a> </li> <li>Collins, A., Brown, J.S., &amp; Newman, S.E. (1989). <em>Cognitive Apprenticeship: Teaching the Crafts of Reading, Writing, and Mathematics</em>. In L.B. Resnick (Ed.), <em>Knowing, Learning, and Instruction: Essays in Honor of Robert Glaser</em> (pp. 453-494). Lawrence Erlbaum Associates.</li> <li>Farley, D. (2021). <em>Modern Software Engineering: Doing What Works to Build Better Software Faster</em>. Addison-Wesley Professional.</li> <li>Kahneman, D. (2011). <em>Thinking, Fast and Slow</em>. Farrar, Straus and Giroux.</li> <li>Kazemitabaar, M., Chow, J., Ma, C.K.T., Ericson, B.J., Weintrop, D., &amp; Grossman, T. (2023). <em>Studying the Effect of AI Code Generators on Supporting Novice Learners in Introductory Programming</em>. CHI ‘23. DOI: <a href="https://doi.org/10.1145/3544548.3580919" rel="external nofollow noopener" target="_blank">10.1145/3544548.3580919</a> </li> <li>Kolb, D.A. (1984). <em>Experiential Learning: Experience as the Source of Learning and Development</em>. Prentice Hall. See also: <a href="https://www.imkopleidingen.nl/nieuws/kolb-leerstijlen/" rel="external nofollow noopener" target="_blank">imkopleidingen.nl/nieuws/kolb-leerstijlen</a> </li> <li>McCarthy, B. (1980/1987). <em>The 4MAT System: Teaching to Learning Styles with Right/Left Mode Techniques</em>. Excel Inc. See also: <a href="https://4mat4learning.com.au/what-is-4mat/" rel="external nofollow noopener" target="_blank">4mat4learning.com.au</a> </li> <li>Russinovich, M., &amp; Hanselman, S. (2024). <em>Redefining the Software Engineering Profession for AI</em>. Communications of the ACM. DOI: <a href="https://doi.org/10.1145/3779312" rel="external nofollow noopener" target="_blank">10.1145/3779312</a> </li> </ul> </div> </article> <br> <hr> <br> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <ul class="list-disc pl-7 my-3 space-y-2 marker:text-[var(--global-theme-color)]"> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2026/azure-api-center-mcp-registry-iac/">How to manage your private MCP registry on Azure API Center with Infrastructure as Code</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2025/azureboards-github-integration-advanced/">Multiple Azure Boards organizations / one GitHub organization integration</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/managed-devops-pools/">Managed DevOps Pools in Bicep</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2024/what-we-can-learn-from-spacex-regarding-devops/">What We Can Learn from SpaceX Regarding DevOps</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2016/spec-by-example-and-mbot/">Serious Gaming – Learn Specification by Example with the mBot</a> </li> <li class="leading-relaxed"> <a class="underline decoration-1 hover:text-[var(--global-hover-color)]" href="/blog/2016/10-years-of-testing/">10 years of testing - from covering your ass to accelerating feedbackloops</a> </li> </ul> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Joost Voskuil. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: June 16, 2026. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
+// get the ninja-keys element
+const ninja = document.querySelector('ninja-keys');
+
+// add the home and posts menu items
+ninja.data = [{
+    id: "nav-about",
+    title: "about",
+    section: "Navigation",
+    handler: () => {
+      window.location.href = "/";
+    },
+  },{id: "nav-blog",
+          title: "blog",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/blog/";
+          },
+        },{id: "nav-cv",
+          title: "cv",
+          description: "Here you can find my resume",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "post-how-ai-is-changing-how-beginners-learn-in-our-field",
+        
+          title: "How AI is changing how beginners learn in our field",
+        
+        description: "How AI is changing how beginners learn in our field",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/how-ai-is-changing-how-beginners-learn/";
+          
+        },
+      },{id: "post-how-to-manage-your-private-mcp-registry-on-azure-api-center-with-infrastructure-as-code",
+        
+          title: "How to manage your private MCP registry on Azure API Center with Infrastructure...",
+        
+        description: "Infrastructure as Code for Your Private MCP Registry on Azure API Center",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/azure-api-center-mcp-registry-iac/";
+          
+        },
+      },{id: "post-multiple-azure-boards-organizations-one-github-organization-integration",
+        
+          title: "Multiple Azure Boards organizations / one GitHub organization integration",
+        
+        description: "This blog explains how to set-up an advanced way configuring Azure Boards / GitHub integration with multiple Azure DevOps organizations backed by different Entra ID&#39;s.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/azureboards-github-integration-advanced/";
+          
+        },
+      },{id: "post-managed-devops-pools-in-bicep",
+        
+          title: "Managed DevOps Pools in Bicep",
+        
+        description: "This blog explains how you can deploy Managed DevOps Pools with Bicep",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/managed-devops-pools/";
+          
+        },
+      },{id: "post-what-we-can-learn-from-spacex-regarding-devops",
+        
+          title: "What We Can Learn from SpaceX Regarding DevOps",
+        
+        description: "A real revolution in space technology is happening right now. SpaceX, the company of Elon Musk, accounts for 80 percent of the total mass brought into space. This number will rapidly increase to 90 percent. Many people are critical of Elon Musk. For this blog, we need to look beyond his ego and focus on how the engineers on the ground are working. In my opinion, SpaceX&#39;s success is due to their approach. Within DevOps, we can learn a lot from them. In this blog, I want to discuss the difference between NASA and SpaceX (both developing a new rocket) and what makes SpaceX so unique.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/what-we-can-learn-from-spacex-regarding-devops/";
+          
+        },
+      },{id: "post-serious-gaming-learn-specification-by-example-with-the-mbot",
+        
+          title: "Serious Gaming – Learn Specification by Example with the mBot",
+        
+        description: "This is a little story about my journey as a tester",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2016/spec-by-example-and-mbot/";
+          
+        },
+      },{id: "post-10-years-of-testing-from-covering-your-ass-to-accelerating-feedbackloops",
+        
+          title: "10 years of testing - from covering your ass to accelerating feedbackloops",
+        
+        description: "This is a little story about my journey as a tester",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2016/10-years-of-testing/";
+          
+        },
+      },{id: "news-while-i-had-this-idea-for-years-i-finally-started-my-own-website-for-blogging-and-sharing-my-ideas-it-39-s-mostly-lightweight-content-often-work-related-some-posts-will-be-in-english-and-some-will-be-in-dutch-of-course-as-always-my-opinions-are-my-own-they-are-work-related-but-not-connected-to-my-employer-or-any-marketing-for-this-website-i-am-using-github-pages-and-jekyll",
+          title: 'While I had this idea for years, I finally started my own website...',
+          description: "",
+          section: "News",},{
+        id: 'social-email',
+        title: 'email',
+        section: 'Socials',
+        handler: () => {
+          window.open("mailto:%6A%6F%6F%73%74@%66%6F%78%68%6F%6C%65.%6E%6C", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/JoostVoskuil", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/jvoskuil", "_blank");
+        },
+      },{
+        id: 'social-rss',
+        title: 'RSS Feed',
+        section: 'Socials',
+        handler: () => {
+          window.open("/feed.xml", "_blank");
+        },
+      },{
+      id: 'light-theme',
+      title: 'Change theme to light',
+      description: 'Change the theme of the site to Light',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("light");
+      },
+    },
+    {
+      id: 'dark-theme',
+      title: 'Change theme to dark',
+      description: 'Change the theme of the site to Dark',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("dark");
+      },
+    },
+    {
+      id: 'system-theme',
+      title: 'Use system default theme',
+      description: 'Change the theme of the site to System Default',
+      section: 'Theme',
+      handler: () => {
+        setThemeSetting("system");
+      },
+    },];
+
+</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
