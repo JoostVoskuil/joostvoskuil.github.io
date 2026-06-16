@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How AI is changing how beginners learn in our field
-date: 2026-06-14 01:00:00
+date: 2026-06-15 01:00:00
 description: How AI is changing how beginners learn in our field
 categories: Learning
 typograms: false
@@ -13,6 +13,8 @@ GitHub Copilot and similar AI assistants have changed software development. Code
 
 In the GitHub Copilot workshops I run, I see a clear pattern. Experienced developers increasingly use GenAI to learn a new language or technology. They let AI generate working sample code quickly, but they recognize patterns and architectural principles they have known for years. They have a professional compass. Russinovich and Hanselman describe this in *Redefining the Software Engineering Profession for AI*: experienced engineers feel an immediate productivity boost because their context and judgment are already well developed.
 
+{% include figure.liquid loading="eager" path="assets/img/kompass.png" class="img-fluid rounded z-depth-0" %}
+
 Beginners lack that compass. With AI, they too can quickly build something that works, but without the mental framework to judge whether that solution will still hold tomorrow: is the architecture sound? is it secure? will it scale? can it be maintained? An experienced developer asks those questions automatically. The difference between junior and senior is no longer about building something that works, but about judging whether what works is also *right*.
 
 On top of that, fast, visible progress feels rewarding: you change something, it works, you want to keep going. For a beginner, the reward is no longer a line of code, but a complete feature. That reward arrives before real understanding does. In *Thinking, Fast and Slow*, Daniel Kahneman describes exactly this trap: System 1 says, “it works, we’re done,” while System 2 asks, “do I understand why it works, when it fails, and what I would do differently?” Vibe coding—prompting until something works without truly understanding it—is exactly the System 1 path. It feels productive and looks productive, but it does not build craftsmanship.
@@ -20,6 +22,8 @@ On top of that, fast, visible progress feels rewarding: you change something, it
 ## Investing in beginners is becoming a better bet, but not automatically
 
 Kent Beck frames this as an investment question. Every beginner you hire is a bet: onboarding, coaching, and review cost more than the output initially returns. Beck calls the period until the break-even point the *Valley of Regret*. Traditionally, that valley lasts about 24 months on average. With annual attrition of 20%, roughly 36% of beginners leave the organization before reaching that point. The investment evaporates.
+
+{% include figure.liquid loading="eager" path="assets/img/learningcurve.webp" class="img-fluid rounded z-depth-0" %}
 
 AI can improve that equation, but only if you use it intentionally. Beck shows that a well-guided team of beginners using AI tools can compress that valley to around 9 months, with early attrition around 15%. The mechanism is simple: a beginner who used to spend three hours finding a suitable API now has options on the table in twenty minutes. But that freed-up time is not a bonus for the next feature. It is time you should invest in weighing those options and building independent judgment. Beck calls this: *learning fast becomes a habit*.
 
@@ -38,6 +42,8 @@ But the study also shows where things go wrong. On average, final solutions were
 ## A deliberate framework: 4MAT
 
 When code is fast and cheap to produce, it becomes more important that a beginner learns how to make choices and test assumptions. That requires a deliberate framework, instead of an implicit process where you improvise and hope learning happens by itself. Bernice McCarthy’s 4MAT learning cycle offers such a framework. Four phases, each with a key question:
+
+{% include figure.liquid loading="eager" path="assets/img/4mat-model.jpg" class="img-fluid rounded z-depth-0" %}
 
 **Experiencing (Why?)**: *why does this problem matter?* AI makes it easy to find relevance: one prompt and you can see how a concept works in practice. But beginners who never have to discover relevance themselves are slower to build independent judgment. Motivation comes easily; the compass does not.
 
