@@ -117,10 +117,10 @@ The customization discovery behavior varies significantly across IDEs:
 
 | IDE | Default Behavior | Path Traversal | Configuration Options |
 | --- | --- | --- | --- |
-| VS Code | Isolated to workspace | Not default, can be configured | `chat.useCustomizationsInParentRepositories` |
-| Copilot CLI | Hierarchical (up to `.git`) | Yes | Environment-based |
-| Visual Studio | Isolated to solution folder | No | None for most customizations |
-| JetBrains Rider | Isolated to solution folder | Limited to Skills | Manual paths (no `../`) |
+| VS Code | Isolated to workspace | Not default, can be configured | `chat.useCustomizationsInParentRepositories: true` |
+| Copilot CLI | Hierarchical (up to `.git`) | Yes | Not required |
+| Visual Studio | Isolated to solution folder (except skills) | No | None |
+| JetBrains Rider | Isolated to solution folder | Downstream only | Manual paths within solution/workspace (no `../`) |
 
 For organizations adopting monorepo structures with domain-specific customizations, the Copilot CLI represents the most consistent baseline, complemented by per-IDE configuration for developers using traditional IDEs. As IDE support matures—particularly with JetBrains' planned integration of the Copilot CLI—this fragmentation should decrease.
 
