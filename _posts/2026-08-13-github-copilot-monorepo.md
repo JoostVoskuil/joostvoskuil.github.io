@@ -117,10 +117,10 @@ The customization discovery behavior varies significantly across IDEs:
 
 | IDE | Default Behavior | Path Traversal | Configuration Options |
 | --- | --- | --- | --- |
-| VS Code | Isolated to workspace | No | `chat.useCustomizationsInParentRepositories` |
+| VS Code | Isolated to workspace | Not default, can be configured | `chat.useCustomizationsInParentRepositories` |
 | Copilot CLI | Hierarchical (up to `.git`) | Yes | Environment-based |
 | Visual Studio | Isolated to solution folder | No | None for most customizations |
-| JetBrains Rider | Isolated to solution folder | Limited | Manual paths (no `../`) |
+| JetBrains Rider | Isolated to solution folder | Limited to Skills | Manual paths (no `../`) |
 
 For organizations adopting monorepo structures with domain-specific customizations, the Copilot CLI represents the most consistent baseline, complemented by per-IDE configuration for developers using traditional IDEs. As IDE support matures—particularly with JetBrains' planned integration of the Copilot CLI—this fragmentation should decrease.
 
@@ -139,4 +139,4 @@ There are, I think, two potential solutions to address this challenge:
 
 ### Solution 2: Wait for the Copilot CLI harness
 
-Once the Copilot CLI is integrated into JetBrains IDEs and Visual Studio, it will provide a consistent discovery mechanism across all IDEs, allowing developers to open any folder and have the correct customizations applied automatically. This will reduce the need for manual configuration and ensure that all teams can work with the same set of rules and best practices defined at the repository, domain, and application levels. I expect this to become the default behavior, but we will have to wait for the Visual Studio team to implement it.
+Once the Copilot CLI harness is integrated into JetBrains IDEs and Visual Studio, it will provide a consistent discovery mechanism across all IDEs, allowing developers to open any folder and have the correct customizations applied automatically. This will reduce the need for manual configuration and ensure that all teams can work with the same set of rules and best practices defined at the repository, domain, and application levels. I expect this to become the default behavior, but we will have to wait for the Visual Studio team to implement it.
