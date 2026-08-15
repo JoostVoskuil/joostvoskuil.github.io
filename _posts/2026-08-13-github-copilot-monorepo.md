@@ -7,19 +7,17 @@ categories: Agentic Development
 typograms: false
 ---
 
-Managing GitHub Copilot customizations—instructions, agents, skills, and hooks—across a monorepo presents a unique challenge. A recent client project revealed that while a domain-first repository structure makes logical sense for multi-team development, ensuring Copilot discovers and applies the correct customizations at each level (repository, domain, application) varies significantly across IDEs. The problem is compounded by common development practices: most developers don't open the repository root; instead, they work with individual solutions, projects, or application folders.
+Managing GitHub Copilot customizations—instructions, agents, skills, and hooks—across a monorepo presents a unique challenge. A recent client project revealed that it is not so easy to apply the correct customizations at each level (repository, domain, application level), and this behavior varies significantly across IDEs. The problem is compounded by common development practice: most developers don't open the repository root; instead, they work with individual solutions, projects, or application folders.
 
 ## The Monorepo Challenge
 
 The organization uses a monorepo structured by domain, with each domain containing multiple backend and frontend applications and, of course, shared modules, libraries, and packages. The goal was to establish a hierarchy of Copilot customizations:
 
-- **Repository level**: shared development patterns and guardrails
-- **Domain level**: domain-specific conventions and best practices
-- **Application level**: service-specific configurations
+- **Repository level**: Generic company wide instructions, agents and skills
+- **Domain level**: domain-specific instructions, skills and best practices
+- **Application level**: application-specific instructions, skills, and agents
 
-The ideal outcome was for developers to be able to open any folder (application, domain, or root) and have Copilot automatically discover and apply the appropriate customizations without manual configuration.
-
-The key constraint: developers typically open a C# solution or a single application folder in their IDE, not the repository root. This means IDE discovery behavior becomes critical.
+The ideal outcome was for developers to be able to open any folder (application, domain, or root) and have Copilot automatically discover and apply the appropriate customizations without manual configuration. Developers typically open a C# solution or a single application folder in their IDE, not the repository root. This means IDE discovery behavior becomes critical.
 
 ## Methodology
 
@@ -51,7 +49,7 @@ repository-root/
 │       └── frontend/
 ```
 
-GitHub Copilot helped me understand the discovery behavior of each IDE. I added instructions like the following to the skills and other customizations:
+GitHub Copilot helped me understand the discovery behavior of each IDE. I added instructions like the following below to instructions and skills and other customizations:
 
 ```markdown
 For Agentic Tester experiments, include the exact marker
@@ -68,9 +66,9 @@ Each IDE or Copilot tool behaved differently in terms of how it discovers and ap
 
 ### Visual Studio Code
 
-#### Scope isolation by default
+#### Isolation by default
 
-By default, Visual Studio Code restricts customization discovery to the current workspace folder. This means the IDE only looks for `.github` folders in the open folder (workspace folder) and does not traverse the directory tree.
+By default, Visual Studio Code restricts customization discovery to the current workspace folder. This means the IDE only looks for the `.github` folder in the open folder (workspace folder) and does not traverse the directory tree up to the repository root.
 
 - Opening the repository root discovers repository-level customizations only
 - Opening an application folder (e.g., `JustA.Api`) discovers only that folder's customizations
@@ -93,11 +91,11 @@ I have not tested this, but the GitHub Copilot app is expected to follow the sam
 
 #### Complex and inconsistent behavior
 
-Visual Studio treats the folder containing the solution/project file as the logical "repository root"—not the actual repository root. Consequently, customization discovery does not traverse upward; it only looks within the solution folder.
+Visual Studio treats the folder containing the solution/project file as the logical "repository root"—not the actual repository root. Consequently, customization discovery does not traverse upward; it only looks within the solution folder. Be aware that when you read the documentation the solution root is considered the "repository root" for Visual Studio, which is misleading.
 
 **The inconsistency**: Skills (recently added to Visual Studio) are discovered in both the solution folder *and* the actual repository root. The IDE requests permission to read skills from the true repository root, but other customization types (instructions, agents, hooks) are not discovered there.
 
-**Limitations**: There is no configuration option to extend discovery beyond the solution folder.
+**Limitations**: There is no configuration option to extend discovery beyond the solution folder. You cannot add folders to search for.
 
 Additionally, Visual Studio does not yet support `AGENTS.md` files, limiting customization expressiveness for this IDE.
 
@@ -109,7 +107,7 @@ JetBrains IDEs treat the solution folder as the root and do not traverse upward 
 
 **The limitation**: Path traversal (e.g., `../` or `../../.github`) does not work in these configuration paths, requiring hardcoded absolute paths. This is fragile and does not scale across teams or environments.
 
-**Future improvement**: GitHub and Microsoft are working to integrate the Copilot CLI as JetBrains' default customization harness. Once implemented, this will provide consistent hierarchical discovery across the monorepo without manual path configuration. You can already try this out; however, the Copilot CLI harness is still buggy.
+**Future improvement**: GitHub and Microsoft are working to integrate the Copilot CLI as JetBrains' default harness. Once implemented, this will provide consistent hierarchical discovery across the monorepo without manual path configuration. You can already try this out; however, the Copilot CLI harness is still buggy and lacks functionality compared to the native implementation.
 
 ## Summary: A Fragmented Landscape
 
@@ -122,21 +120,25 @@ The customization discovery behavior varies significantly across IDEs:
 | Visual Studio | Isolated to solution folder (except skills) | No | None |
 | JetBrains IDE's | Isolated to solution folder | Downstream only | Manual paths within solution/workspace (no `../`) |
 
-For organizations adopting monorepo structures with domain-specific customizations, the Copilot CLI represents the most consistent baseline, complemented by per-IDE configuration for developers using traditional IDEs. As IDE support matures—particularly with JetBrains' planned integration of the Copilot CLI—this fragmentation should decrease.
+For organizations adopting monorepo structures with domain-specific customizations, the Copilot CLI represents the most consistent baseline.
 
 ## Solution
 
-At the time of writing, the state of IDE support for GitHub Copilot customizations in a monorepo remains fragmented. Each IDE has its own discovery behavior, and there is no single solution that works seamlessly across all environments. I must disappoint my client in this regard because the current landscape does not provide the consistent experience they were hoping for.
+At the time of writing, the state of IDE support for GitHub Copilot customizations in a monorepo remains fragmented. Each IDE has its own discovery behavior, and there is no single solution that works seamlessly across all tools. I must disappoint my client in this regard because the current landscape does not provide the consistent experience they were hoping for.
 
 There are, I think, two potential solutions to address this challenge:
 
 ### Solution 1: Treat the way of working like a polyrepo
+
+Work like you are working in a polyrepo, where each domain or application team is responsible for its own Copilot customizations but this can be supported with plugins and a marketplace. This approach allows for a more decentralized governance model, where each team can manage its own customizations while still adhering to organization-wide standards.
 
 - [Build a central Plugin Marketplace](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace) within the organization
 - Each domain or application team can publish its Copilot customizations to the marketplace as a [plugin](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating)
 - Developers can install the relevant customizations from the marketplace in their IDEs, ensuring consistent behavior across teams and environments.
 - Work with the [Agent Package Manager](https://microsoft.github.io/apm/) to consume customizations as packages, allowing for versioning and dependency management.
 
-### Solution 2: Wait for the Copilot CLI harness
+I still have to look how APM can be used for governance purposes. There are some audit features in there.
 
-Once the Copilot CLI harness is integrated into JetBrains IDEs and Visual Studio, it will provide a consistent discovery mechanism across all IDEs, allowing developers to open any folder and have the correct customizations applied automatically. This will reduce the need for manual configuration and ensure that all teams can work with the same set of rules and best practices defined at the repository, domain, and application levels. I expect this to become the default behavior, but we will have to wait for the Visual Studio team to implement it.
+### Solution 2: Wait for the Copilot CLI/SDK harness
+
+Once the Copilot CLI/SDK harness is integrated into all IDE's like JetBrains IDEs and Visual Studio, it will provide a consistent discovery mechanism across all IDEs, allowing developers to open any folder and have the correct customizations applied automatically. This will reduce the need for manual configuration and ensure that all teams can work with the same set of rules and best practices defined at the repository, domain, and application levels. I expect this to become the default behavior, but for now it is still very immature. And we have to wait for the Visual Studio Team to start implementing it. In the most recent Visual Studio August update there is no mention of the Copilot CLI/SDK harness, so I expect it will take a while before it is implemented.
